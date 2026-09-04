@@ -62,16 +62,13 @@ export function Demo() {
                   Product Demo Walkthrough
                 </div>
                 <p className="text-xs sm:text-sm text-[#A3C7D1] leading-relaxed mb-6 font-normal">
-                  Production recording capturing the real mobile workflow is being finalized ahead of university rollout.
+                  A full product demo showcasing the real mobile workflow is currently being prepared.
                 </p>
 
-                {/* Two Product Context Badges */}
-                <div className="flex flex-wrap items-center justify-center gap-2.5">
+                {/* Product Context Badge */}
+                <div className="flex items-center justify-center">
                   <span className="px-3 py-1 rounded-full bg-[#20272B] text-[#C7DDE3] border border-[#2D4C59] text-xs font-semibold">
                     Student Experience
-                  </span>
-                  <span className="px-3 py-1 rounded-full bg-[#20272B] text-[#A3C7D1] border border-[#2D4C59] text-xs font-semibold">
-                    Employer Experience
                   </span>
                 </div>
               </div>
@@ -80,16 +77,12 @@ export function Demo() {
         </div>
 
         {/* Video Metadata Substrip */}
-        <div className="mt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-[#656B70] gap-4 px-2">
+        <div className="mt-8 flex items-center justify-center text-xs text-[#656B70] px-2">
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#467A8F]" />
             <span className="font-semibold text-[#171A1C]">Covered in Demo:</span>
-            <span>CV Ingestion · Match Breakdown · Application Drafter · Status Pipeline</span>
+            <span>CV Upload &amp; Analysis · Match Breakdown · Application Support · Application Tracking</span>
           </div>
-
-          <span className="text-[11px] font-mono text-[#656B70] bg-white px-3 py-1 rounded-full border border-[#E5E7E8]">
-            Source: {EXTERNAL_LINKS.DEMO_URL ? "Live Demo" : "Demo recording in preparation"}
-          </span>
         </div>
       </div>
     </section>

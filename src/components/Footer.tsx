@@ -118,9 +118,6 @@ export function Footer() {
                   <span className="text-[#656B70]">Partnerships (Coming soon)</span>
                 )}
               </li>
-              <li className="pt-2 text-xs text-[#656B70]">
-                Üsküdar University · AISS Club
-              </li>
             </ul>
           </div>
         </div>

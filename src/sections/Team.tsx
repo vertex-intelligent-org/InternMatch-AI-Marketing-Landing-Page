@@ -14,7 +14,7 @@ export function Team() {
             Meet the builders.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#656B70] leading-relaxed font-normal">
-            The computer engineering students behind the architecture and mobile experience of InternMatch AI.
+            The student builders behind the architecture, engineering, and product experience of InternMatch AI.
           </p>
         </div>
 

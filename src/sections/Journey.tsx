@@ -16,7 +16,7 @@ export function Journey() {
             to a real product.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#656B70] leading-relaxed font-normal">
-            A disciplined transition from an initial hackathon concept into launch-ready infrastructure.
+            A disciplined transition from an initial hackathon concept toward public launch.
           </p>
         </div>
 

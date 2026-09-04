@@ -41,19 +41,19 @@ export function ProductShowcase() {
                 <span className="w-5 h-5 rounded-full bg-[#E3EEF1] text-[#345B6B] flex items-center justify-center">
                   <CheckIcon className="w-3 h-3" />
                 </span>
-                <span>Automatic schema parsing for education &amp; coursework</span>
+                <span>Structured extraction of skills, education, experience and projects</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-5 h-5 rounded-full bg-[#E3EEF1] text-[#345B6B] flex items-center justify-center">
                   <CheckIcon className="w-3 h-3" />
                 </span>
-                <span>Granular skill taxonomy and project verification</span>
+                <span>Structured skill taxonomy and project extraction</span>
               </div>
               <div className="flex items-center gap-3">
                 <span className="w-5 h-5 rounded-full bg-[#E3EEF1] text-[#345B6B] flex items-center justify-center">
                   <CheckIcon className="w-3 h-3" />
                 </span>
-                <span>Original CV remains untouched and private</span>
+                <span>Original CV is not rewritten by InternMatch</span>
               </div>
             </div>
           </div>
@@ -68,8 +68,8 @@ export function ProductShowcase() {
                       CV
                     </div>
                     <div>
-                      <div className="text-sm font-bold text-[#171A1C]">Engineering_Resume_2026.pdf</div>
-                      <div className="text-xs text-[#656B70]">Parsed in 1.4s · 100% Verified</div>
+                      <div className="text-sm font-bold text-[#171A1C]">Sample_CV.pdf</div>
+                      <div className="text-xs text-[#656B70]">CV processed · Structured profile created</div>
                     </div>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-[#F2F7F8] text-[#345B6B] text-xs font-semibold border border-[#C7DDE3]">
@@ -97,7 +97,6 @@ export function ProductShowcase() {
                     </span>
                     <div className="font-semibold text-[#171A1C] mt-1">Üsküdar University</div>
                     <div className="text-[#656B70] mt-0.5">Computer Engineering, Senior</div>
-                    <div className="text-[11px] text-[#345B6B] font-medium mt-1">AISS Club Research Member</div>
                   </div>
                 </div>
               </div>
@@ -169,7 +168,7 @@ export function ProductShowcase() {
             <div className="p-4 rounded-2xl bg-[#F2F7F8] border border-[#C7DDE3] text-xs text-[#2D4C59] space-y-1">
               <div className="font-semibold">Deterministic Hybrid Scoring</div>
               <p className="text-[#656B70] leading-normal">
-                No hallucinated job recommendations. Candidates see verifiable reasons for every surfaced role.
+                Matches are scored from structured candidate and internship signals rather than generated from scratch. Students can see the main factors behind each match.
               </p>
             </div>
           </div>
@@ -273,21 +272,21 @@ export function ProductShowcase() {
                 <div className="flex items-center justify-between pb-3 border-b border-[#E5E7E8]">
                   <div className="flex items-center gap-2">
                     <div className="w-2.5 h-2.5 rounded-full bg-[#467A8F]" />
-                    <span className="text-xs font-bold text-[#171A1C]">Application Drafter</span>
+                    <span className="text-xs font-bold text-[#171A1C]">Application Support</span>
                   </div>
-                  <span className="text-[11px] text-[#656B70] font-mono">Grounded in verified CV</span>
+                  <span className="text-[11px] text-[#656B70] font-mono">Grounded in your candidate profile</span>
                 </div>
 
                 <div className="p-4 rounded-xl bg-[#F7F7F5] border border-[#E5E7E8] text-xs space-y-2">
                   <div className="font-semibold text-[#171A1C]">Generated Tailored Introduction:</div>
                   <p className="text-[#656B70] leading-relaxed">
-                    &ldquo;Having developed an end-to-end FastAPI and PyTorch NLP pipeline at Üsküdar University&apos;s AISS Club, my technical experience in structured feature extraction directly aligns with your AI Systems Intern role requirements...&rdquo;
+                    &ldquo;Having developed an end-to-end FastAPI and PyTorch NLP pipeline during university project coursework, my technical experience in structured feature extraction directly aligns with your AI Systems Intern role requirements...&rdquo;
                   </p>
                 </div>
 
                 <div className="flex items-center justify-between text-[11px] text-[#656B70] pt-1">
                   <span className="text-[#345B6B] font-medium">✓ Grounded evidence</span>
-                  <span>100% Student-Authored Review</span>
+                  <span>Review and edit before use</span>
                 </div>
               </div>
             </div>
@@ -304,7 +303,7 @@ export function ProductShowcase() {
               Create context-aware application content grounded in your real background and the internship requirements.
             </p>
             <p className="text-sm text-[#656B70] leading-relaxed">
-              No generic robotic cover letters. InternMatch highlights your genuine achievements that match what the hiring team specifically requested.
+              Application content is grounded in your profile and the role requirements, helping you prepare a more relevant application.
             </p>
           </div>
         </div>
@@ -341,13 +340,13 @@ export function ProductShowcase() {
             <div className="p-6 sm:p-8 rounded-3xl bg-[#F7F7F5] border border-[#E5E7E8] shadow-sm relative overflow-hidden">
               <div className="bg-white rounded-2xl p-6 border border-[#E5E7E8] shadow-xs space-y-3">
                 <div className="text-xs font-bold text-[#171A1C] pb-2 border-b border-[#E5E7E8]">
-                  Application Pipeline (Spring 2026)
+                  Sample Application Pipeline
                 </div>
 
                 <div className="p-3 rounded-xl bg-[#F2F7F8] border border-[#C7DDE3] flex items-center justify-between">
                   <div>
                     <div className="text-xs font-bold text-[#171A1C]">Autonomous Platforms Inc</div>
-                    <div className="text-[11px] text-[#656B70]">AI Systems Intern · Submitted Feb 28</div>
+                    <div className="text-[11px] text-[#656B70]">AI Systems Intern</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-[#467A8F] text-white text-[10px] font-bold">
                     Interviewing
@@ -357,7 +356,7 @@ export function ProductShowcase() {
                 <div className="p-3 rounded-xl bg-[#F7F7F5] border border-[#E5E7E8] flex items-center justify-between">
                   <div>
                     <div className="text-xs font-bold text-[#171A1C]">Cloud Scale Labs</div>
-                    <div className="text-[11px] text-[#656B70]">Backend Fellow · Submitted Mar 02</div>
+                    <div className="text-[11px] text-[#656B70]">Backend Fellow</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-white text-[#345B6B] border border-[#C7DDE3] text-[10px] font-bold">
                     Applied
@@ -367,7 +366,7 @@ export function ProductShowcase() {
                 <div className="p-3 rounded-xl bg-[#F7F7F5] border border-[#E5E7E8] flex items-center justify-between">
                   <div>
                     <div className="text-xs font-bold text-[#171A1C]">FinTech Research Hub</div>
-                    <div className="text-[11px] text-[#656B70]">Data Engineering Intern · Saved</div>
+                    <div className="text-[11px] text-[#656B70]">Data Engineering Intern</div>
                   </div>
                   <span className="px-2.5 py-1 rounded-full bg-white text-[#656B70] border border-[#E5E7E8] text-[10px] font-bold">
                     Saved

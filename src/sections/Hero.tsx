@@ -106,7 +106,7 @@ export function Hero() {
                   </div>
                   <div>
                     <div className="text-[11px] font-bold text-[#171A1C] leading-none">
-                      Candidate_CV.pdf
+                      Sample_CV.pdf
                     </div>
                     <div className="text-[9px] text-[#467A8F] font-medium">
                       Structured Intake
@@ -122,17 +122,17 @@ export function Hero() {
                   </div>
                   <div className="flex justify-between items-center bg-[#F7F7F5] px-2 py-1 rounded">
                     <span>Projects Parsed</span>
-                    <span className="font-semibold text-[#171A1C]">3 verified</span>
+                    <span className="font-semibold text-[#171A1C]">3 projects</span>
                   </div>
                   <div className="flex justify-between items-center bg-[#F7F7F5] px-2 py-1 rounded">
-                    <span>Education Vector</span>
+                    <span>Education</span>
                     <span className="font-semibold text-[#171A1C]">CS Senior</span>
                   </div>
                 </div>
 
                 {/* Flow indicator to phone */}
                 <div className="mt-2 pt-1 flex items-center justify-between text-[9px] text-[#467A8F] font-medium">
-                  <span>Vectorizing profile</span>
+                  <span>Structuring profile</span>
                   <span className="w-2 h-2 rounded-full bg-[#467A8F] animate-ping" />
                 </div>
               </div>

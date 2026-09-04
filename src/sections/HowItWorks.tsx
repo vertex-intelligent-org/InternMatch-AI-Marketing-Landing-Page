@@ -82,7 +82,7 @@ export function HowItWorks() {
           <span className="text-slate-300">→</span>
           <span className="font-semibold text-[#171A1C]">Why You Match</span>
           <span className="text-slate-300">→</span>
-          <span className="font-semibold text-[#345B6B]">Application Success</span>
+          <span className="font-semibold text-[#345B6B]">Application Support</span>
         </div>
       </div>
     </section>

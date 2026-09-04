@@ -12,7 +12,7 @@ export function Employer() {
         <div className="p-8 sm:p-12 rounded-3xl bg-white border border-[#E5E7E8] shadow-xs flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="max-w-xl text-left">
             <span className="text-xs font-bold tracking-widest text-[#656B70] uppercase block mb-3">
-              For Employers &amp; Research Labs
+              For Employers
             </span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#171A1C] tracking-tight leading-snug mb-4">
               Built for students.
@@ -26,8 +26,8 @@ export function Employer() {
             </p>
           </div>
 
-          <div className="flex-shrink-0 w-full md:w-auto">
-            {hasContactEmail ? (
+          {hasContactEmail && (
+            <div className="flex-shrink-0 w-full md:w-auto">
               <Button
                 href={`mailto:${EXTERNAL_LINKS.CONTACT_EMAIL}?subject=Employer%20Partnership%20Inquiry`}
                 variant="secondary"
@@ -37,12 +37,8 @@ export function Employer() {
               >
                 Interested in partnering with InternMatch?
               </Button>
-            ) : (
-              <span className="inline-flex items-center justify-center px-6 py-3.5 rounded-full bg-[#F7F7F5] text-[#656B70] text-sm font-medium border border-[#E5E7E8] cursor-default select-none w-full md:w-auto">
-                Partnership contact coming soon
-              </span>
-            )}
-          </div>
+            </div>
+          )}
         </div>
       </div>
     </section>

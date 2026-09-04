@@ -13,7 +13,7 @@ export function Validation() {
             More than a hackathon prototype.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#656B70] leading-relaxed font-normal">
-            Built with thorough architectural rigor, automated validation, and a scalable core foundation.
+            Built with a production-oriented architecture, automated validation, and a maintainable core foundation.
           </p>
         </div>
 
@@ -38,7 +38,7 @@ export function Validation() {
 
               <div className="mt-6 pt-4 border-t border-[#E5E7E8] flex items-center gap-2 text-[11px] text-[#345B6B] font-semibold">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#467A8F]" />
-                <span>Verified Metric</span>
+                <span>{m.tag || "Validated capability"}</span>
               </div>
             </div>
           ))}

@@ -24,11 +24,13 @@ export function FinalCTA() {
           </div>
 
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#171A1C] leading-[1.12] mb-4">
-            See InternMatch AI in action.
+            The product is built.
+            <br />
+            The next step is launch.
           </h2>
 
           <p className="text-base sm:text-lg text-[#656B70] max-w-xl mx-auto mb-8 font-normal">
-            Explore the product experience, watch the demo, and follow our journey toward public release.
+            Explore InternMatch AI today and follow the journey toward public release.
           </p>
 
           {/* Action CTAs */}

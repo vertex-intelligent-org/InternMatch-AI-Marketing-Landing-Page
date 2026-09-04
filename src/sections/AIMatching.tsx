@@ -85,7 +85,7 @@ export function AIMatching() {
               </div>
 
               <div className="p-3 rounded-xl bg-[#171C1F]/60 border border-[#2D4C59]/60 text-left text-xs text-[#78A9B8]">
-                <span className="text-[#F5F6F4] font-semibold">Application Drafting:</span> Role-specific cover points grounded in verified CV achievements.
+                <span className="text-[#F5F6F4] font-semibold">Application Support:</span> Role-specific application support grounded in candidate and internship context.
               </div>
             </div>
           </div>
@@ -100,9 +100,10 @@ export function AIMatching() {
               <span className="w-2 h-2 rounded-full bg-[#78A9B8]" />
               <span className="font-semibold text-[#F5F6F4]">Grounded AI assistance.</span>
             </div>
-            <span className="text-[#A3C7D1] font-mono text-[11px]">
-              No black-box hallucinated rejections
-            </span>
+            <div className="flex items-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-[#C7DDE3]" />
+              <span className="font-semibold text-[#F5F6F4]">Transparent match factors.</span>
+            </div>
           </div>
         </div>
       </div>

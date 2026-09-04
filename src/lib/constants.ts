@@ -58,8 +58,8 @@ export const EXTERNAL_LINKS = {
   // Demo video source (e.g. /media/internmatch-demo.mp4 or YouTube link)
   DEMO_URL: null as string | null,
 
-  // Official GitHub project repository URL when published
-  GITHUB_URL: null as string | null,
+  // Official GitHub marketing website repository URL
+  GITHUB_URL: "https://github.com/vertex-intelligent/InternMatch-AI-Marketing-Landing-Page" as string | null,
 
   // Official AISS Club URL
   AISS_URL: null as string | null,
@@ -153,7 +153,7 @@ export const HOW_IT_WORKS_STEPS = [
   {
     step: "03",
     title: "Discover relevant matches",
-    format: "Multi-Vector Alignment",
+    format: "Hybrid Match Scoring",
     description: "Internships are compared against your actual profile using structured skill data and semantic similarity.",
     badge: "Match Engine",
   },
@@ -244,7 +244,7 @@ export const BENEFITS = [
   },
   {
     title: "Use it your way",
-    description: "Full native support for English, Turkish and Arabic students.",
+    description: "Available in English, Turkish, and Arabic.",
     tag: "Multilingual",
   },
 ];
@@ -254,21 +254,25 @@ export const VALIDATION_METRICS = [
     value: "542",
     label: "Backend tests passed",
     subtext: "Comprehensive automated test suite",
+    tag: "Verified metric",
   },
   {
     value: "3",
     label: "Languages supported",
     subtext: "English · Türkçe · العربية",
+    tag: "Validated capability",
   },
   {
     value: "Cross-platform",
     label: "Mobile architecture",
     subtext: "Built for iOS and Android devices",
+    tag: "Validated capability",
   },
   {
     value: "Hybrid",
     label: "Matching approach",
     subtext: "Structured skills + semantic vector search",
+    tag: "Validated capability",
   },
 ];
 
@@ -294,7 +298,7 @@ export const JOURNEY_MILESTONES = [
   {
     stage: "Real-Device Validation",
     status: "completed",
-    description: "Tested across mobile form factors with genuine student CVs.",
+    description: "Validated on a real Android device across core CV and matching flows.",
   },
   {
     stage: "Launch Readiness",
@@ -324,7 +328,7 @@ export const RESOURCES_LINKS = [
   },
   {
     title: "GitHub",
-    description: "Explore the project repository.",
+    description: "View the InternMatch AI marketing website source.",
     href: EXTERNAL_LINKS.GITHUB_URL,
     isExternal: true,
     available: Boolean(EXTERNAL_LINKS.GITHUB_URL),
@@ -375,7 +379,7 @@ export const FAQS = [
   {
     question: "What happens to my CV?",
     answer:
-      "CV data is processed to provide InternMatch features. Full data-handling details will be published in the Privacy Policy before public launch.",
+      "CV information is processed to provide InternMatch features. Full data-handling details will be published in the Privacy Policy before public release.",
   },
   {
     question: "Is InternMatch available now?",
@@ -385,6 +389,6 @@ export const FAQS = [
   {
     question: "Will it be available on iOS and Android?",
     answer:
-      "The application is built as a cross-platform mobile product. Public store availability will be announced following platform approval.",
+      "InternMatch AI is built as a cross-platform mobile product. Public store availability will be announced following platform approval.",
   },
 ];
