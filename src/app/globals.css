@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    /* InternMatch AI Brand Palette (Derived from official icon #467A8F) */
+    --brand-50: #f2f7f8;
+    --brand-100: #e3eef1;
+    --brand-200: #c7dde3;
+    --brand-300: #a3c7d1;
+    --brand-400: #78a9b8;
+    --brand-500: #467a8f; /* Primary Brand Teal */
+    --brand-600: #3d6c7f;
+    --brand-700: #345b6b;
+    --brand-800: #2d4c59;
+    --brand-900: #263f49;
+
+    /* Light Neutral System */
+    --canvas: #f7f7f5;
+    --surface: #ffffff;
+    --text-primary: #171a1c;
+    --text-secondary: #656b70;
+    --border: #e5e7e8;
+
+    /* Dark Technical Section Tokens */
+    --dark-bg: #171c1f;
+    --dark-surface: #20272b;
+    --dark-text: #f5f6f4;
+
+    /* Icon Off-White Reference */
+    --icon-offwhite: #ecebe7;
+
+    /* Restrained Brand Lighting */
+    --brand-glow: rgba(70, 122, 143, 0.12);
+  }
+
+  html {
+    scroll-behavior: smooth;
+    color: #171a1c;
+    background-color: #f7f7f5;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    overflow-x: hidden;
+    min-height: 100vh;
+    background-color: #f7f7f5;
+    color: #171a1c;
+  }
+}
+
+/* Micro-animations */
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+@keyframes floatReverse {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.03);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 6s ease-in-out infinite;
+}
+
+.animate-float-reverse {
+  animation: floatReverse 7s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+/* Glassmorphism using neutral tones */
+.glass-nav {
+  background: rgba(247, 247, 245, 0.88);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+/* Accessibility: Respect Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
