@@ -1,0 +1,47 @@
+{
+  "version": 2,
+  "frameCount": 110,
+  "frameStart": 1,
+  "frameEnd": 110,
+  "desktop": {
+    "width": 1400,
+    "height": 900,
+    "pattern": "/media/hero-bow/desktop/frame-{frame}.webp",
+    "poster": "/media/hero-bow/desktop/frame-0001.webp"
+  },
+  "mobile": {
+    "width": 900,
+    "height": 900,
+    "pattern": "/media/hero-bow/mobile/frame-{frame}.webp",
+    "poster": "/media/hero-bow/mobile/frame-0001.webp"
+  },
+  "timeline": {
+    "rest": {
+      "start": 1,
+      "end": 18
+    },
+    "draw": {
+      "start": 19,
+      "end": 50
+    },
+    "hold": {
+      "start": 50,
+      "end": 60
+    },
+    "release": {
+      "start": 60,
+      "end": 64
+    },
+    "flight": {
+      "start": 64,
+      "end": 84
+    },
+    "impact": {
+      "frame": 84
+    },
+    "resolve": {
+      "start": 84,
+      "end": 110
+    }
+  }
+}

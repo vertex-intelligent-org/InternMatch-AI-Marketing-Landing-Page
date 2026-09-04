@@ -2,36 +2,352 @@
 
 import React from "react";
 import { Button } from "@/components/Button";
-import { DeviceFrame } from "@/components/DeviceFrame";
-import { FloatingSkillChip } from "@/components/FloatingSkillChip";
-import { ArrowRightIcon, DocumentIcon, SparklesIcon, PlayIcon } from "@/components/Icons";
+import { HeroBowScene } from "@/components/HeroBowScene";
+import { ArrowRightIcon, SparklesIcon, PlayIcon } from "@/components/Icons";
 import { SITE_CONFIG } from "@/lib/constants";
 
 export function Hero() {
   return (
-    <section className="relative pt-32 pb-20 md:pt-40 md:pb-32 overflow-hidden">
-      {/* Restrained brand light atmosphere (#467A8F subtle ambience) */}
+    <section
+      id="hero"
+      className="relative pt-28 sm:pt-32 md:pt-40 pb-16 md:pb-24 overflow-x-clip overflow-y-visible isolate"
+    >
+      {/* === INTERNMATCH HERO AURORA START === */}
+
+      <style>{`
+        @keyframes internmatchHeroAuroraA {
+          0% {
+            transform:
+              translate3d(-10%, -4%, 0)
+              scale(1.15)
+              rotate(-2deg);
+          }
+
+          50% {
+            transform:
+              translate3d(4%, 2%, 0)
+              scale(1.22)
+              rotate(2deg);
+          }
+
+          100% {
+            transform:
+              translate3d(12%, -2%, 0)
+              scale(1.16)
+              rotate(-1deg);
+          }
+        }
+
+        @keyframes internmatchHeroAuroraB {
+          0% {
+            transform:
+              translate3d(10%, 3%, 0)
+              scale(1.20)
+              rotate(2deg);
+          }
+
+          50% {
+            transform:
+              translate3d(-4%, -3%, 0)
+              scale(1.12)
+              rotate(-2deg);
+          }
+
+          100% {
+            transform:
+              translate3d(-12%, 2%, 0)
+              scale(1.18)
+              rotate(1deg);
+          }
+        }
+
+        @keyframes internmatchHeroAuroraC {
+          0% {
+            transform:
+              translate3d(-4%, 2%, 0)
+              scale(1.08);
+          }
+
+          50% {
+            transform:
+              translate3d(7%, -2%, 0)
+              scale(1.17);
+          }
+
+          100% {
+            transform:
+              translate3d(-2%, 3%, 0)
+              scale(1.10);
+          }
+        }
+
+        .internmatch-hero-aurora-a {
+          animation:
+            internmatchHeroAuroraA
+            14s
+            cubic-bezier(0.45, 0, 0.55, 1)
+            infinite alternate;
+        }
+
+        .internmatch-hero-aurora-b {
+          animation:
+            internmatchHeroAuroraB
+            18s
+            cubic-bezier(0.45, 0, 0.55, 1)
+            infinite alternate;
+        }
+
+        .internmatch-hero-aurora-c {
+          animation:
+            internmatchHeroAuroraC
+            22s
+            ease-in-out
+            infinite alternate;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .internmatch-hero-aurora-a,
+          .internmatch-hero-aurora-b,
+          .internmatch-hero-aurora-c {
+            animation: none !important;
+          }
+        }
+      `}</style>
+
+      <div
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          overflow-hidden
+        "
+        style={{
+          zIndex: -1,
+          background:
+            "linear-gradient(180deg, #F7F7F5 0%, #F4F7F8 20%, #F3F6F7 66%, #F7F7F5 100%)",
+        }}
+        aria-hidden="true"
+      >
+
+        {/* ===============================================
+            LARGE MOVING COLOR FIELD A
+            pink + cyan
+            =============================================== */}
+
+        <div
+          className="
+            internmatch-hero-aurora-a
+            absolute
+            -left-[34%]
+            -top-[20%]
+            h-[94%]
+            w-[155%]
+            blur-[46px]
+            sm:blur-[68px]
+            lg:-left-[20%]
+            lg:-top-[22%]
+            lg:h-[100%]
+            lg:w-[135%]
+            lg:blur-[90px]
+            will-change-transform
+          "
+          style={{
+            background: `
+              radial-gradient(
+                ellipse 38% 48% at 16% 28%,
+                rgba(230, 80, 213, 0.46) 0%,
+                rgba(190, 90, 220, 0.27) 30%,
+                rgba(190, 90, 220, 0.07) 52%,
+                transparent 73%
+              ),
+
+              radial-gradient(
+                ellipse 46% 50% at 54% 24%,
+                rgba(38, 181, 229, 0.62) 0%,
+                rgba(51, 163, 218, 0.36) 32%,
+                rgba(51, 163, 218, 0.08) 55%,
+                transparent 74%
+              )
+            `,
+          }}
+        />
+
+        {/* ===============================================
+            LARGE MOVING COLOR FIELD B
+            teal + green
+            =============================================== */}
+
+        <div
+          className="
+            internmatch-hero-aurora-b
+            absolute
+            -right-[34%]
+            top-[8%]
+            h-[92%]
+            w-[150%]
+            blur-[52px]
+            sm:blur-[74px]
+            lg:-right-[22%]
+            lg:top-[4%]
+            lg:h-[100%]
+            lg:w-[130%]
+            lg:blur-[98px]
+            opacity-90
+            will-change-transform
+          "
+          style={{
+            background: `
+              radial-gradient(
+                ellipse 46% 48% at 78% 32%,
+                rgba(40, 190, 193, 0.45) 0%,
+                rgba(52, 168, 177, 0.25) 35%,
+                rgba(52, 168, 177, 0.06) 57%,
+                transparent 76%
+              ),
+
+              radial-gradient(
+                ellipse 44% 52% at 82% 68%,
+                rgba(49, 170, 125, 0.38) 0%,
+                rgba(65, 158, 126, 0.20) 34%,
+                rgba(65, 158, 126, 0.045) 58%,
+                transparent 76%
+              )
+            `,
+          }}
+        />
+
+        {/* ===============================================
+            MOVING VIOLET / BLUE DEPTH
+            =============================================== */}
+
+        <div
+          className="
+            internmatch-hero-aurora-c
+            absolute
+            -left-[20%]
+            top-[36%]
+            h-[76%]
+            w-[122%]
+            blur-[64px]
+            sm:blur-[82px]
+            lg:h-[72%]
+            lg:w-[110%]
+            lg:blur-[108px]
+            opacity-75
+            will-change-transform
+          "
+          style={{
+            background: `
+              radial-gradient(
+                ellipse 44% 50% at 26% 54%,
+                rgba(111, 101, 223, 0.28) 0%,
+                rgba(111, 101, 223, 0.13) 40%,
+                transparent 72%
+              ),
+
+              radial-gradient(
+                ellipse 46% 48% at 65% 48%,
+                rgba(63, 183, 222, 0.24) 0%,
+                rgba(63, 183, 222, 0.09) 45%,
+                transparent 74%
+              )
+            `,
+          }}
+        />
+
+        {/* ===============================================
+            SOFT LIGHT IN THE CENTER
+
+            Keeps typography and Blender model readable.
+            =============================================== */}
+
+        <div
+          className="absolute inset-0"
+          style={{
+            background: `
+              radial-gradient(
+                ellipse 58% 44% at 46% 38%,
+                rgba(255,255,255,0.38) 0%,
+                rgba(255,255,255,0.13) 45%,
+                transparent 78%
+              )
+            `,
+          }}
+        />
+
+        {/* ===============================================
+            TOP HEADER BLEND
+
+            Navbar feels like part of the same background.
+            No rectangular beginning.
+            =============================================== */}
+
+        <div
+          className="
+            absolute
+            inset-x-0
+            top-0
+            h-[12%]
+          "
+          style={{
+            background:
+              "linear-gradient(180deg, rgba(247,247,245,0.24) 0%, rgba(247,247,245,0) 100%)",
+          }}
+        />
+
+        {/* ===============================================
+            BOTTOM SEAMLESS FADE
+
+            This is the important part:
+            Aurora slowly dissolves into the normal website
+            background BEFORE the next section begins.
+            =============================================== */}
+
+        <div
+          className="
+            absolute
+            inset-x-0
+            bottom-0
+            h-[42%]
+          "
+          style={{
+            background: `
+              linear-gradient(
+                180deg,
+                rgba(247,247,245,0) 0%,
+                rgba(247,247,245,0.10) 18%,
+                rgba(247,247,245,0.32) 42%,
+                rgba(247,247,245,0.68) 70%,
+                rgba(247,247,245,0.92) 88%,
+                #F7F7F5 100%
+              )
+            `,
+          }}
+        />
+
+      </div>
+
+      {/* === INTERNMATCH HERO AURORA END === */}
+
       <div
         className="absolute -top-40 left-1/2 -translate-x-1/2 w-[750px] h-[450px] bg-[#467A8F]/8 blur-[140px] rounded-full pointer-events-none -z-10"
         aria-hidden="true"
       />
+
       <div
         className="absolute top-1/3 -right-40 w-[550px] h-[550px] bg-[#78A9B8]/6 blur-[150px] rounded-full pointer-events-none -z-10"
         aria-hidden="true"
       />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-          {/* Left Column: ~42% copy */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
           <div className="lg:col-span-5 flex flex-col items-start text-left z-10">
-            {/* Eyebrow badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#F2F7F8] border border-[#C7DDE3] text-xs font-semibold text-[#2D4C59] mb-6 backdrop-blur-xs">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2F7F8] border border-[#C7DDE3] text-[13px] sm:text-sm font-semibold text-[#2D4C59] mb-5 backdrop-blur-xs">
               <SparklesIcon className="w-3.5 h-3.5 text-[#467A8F]" />
               <span>AI-powered internship matching for university students</span>
             </div>
 
-            {/* Main Brand Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-[#171A1C] leading-[1.08] mb-6">
+            <h1 className="text-[46px] sm:text-[54px] md:text-[64px] font-extrabold tracking-[-0.035em] text-[#171A1C] leading-[1.02] mb-0">
               Stop searching.
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#2D4C59] via-[#467A8F] to-[#78A9B8]">
@@ -39,14 +355,27 @@ export function Hero() {
               </span>
             </h1>
 
-            {/* Subheadline */}
-            <p className="text-base sm:text-lg text-[#656B70] leading-relaxed max-w-lg mb-8 font-normal">
+            {/*
+              MOBILE:
+              Bow scene is intentionally in normal document flow directly
+              below the headline so the complete composition is visible
+              immediately and can never be clipped beneath the Hero.
+            */}
+            <div
+              data-bow-track
+              className="relative w-full h-[640px] sm:h-[700px] lg:hidden mt-1"
+            >
+              <div className="sticky top-[96px] pt-4">
+                <HeroBowScene className="w-full max-w-[680px] mx-auto" />
+              </div>
+            </div>
+
+            <p className="text-[17px] sm:text-[19px] text-[#656B70] leading-[1.65] max-w-lg mb-8 font-normal">
               Upload your CV once. InternMatch AI understands your skills, finds
               relevant internships, explains why they fit, and helps you move
               from discovery to application.
             </p>
 
-            {/* CTAs: Watch Demo & Explore InternMatch */}
             <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mb-6">
               <Button
                 href="#demo"
@@ -57,6 +386,7 @@ export function Hero() {
               >
                 Watch Demo
               </Button>
+
               <Button
                 href="#product"
                 variant="secondary"
@@ -68,179 +398,36 @@ export function Hero() {
               </Button>
             </div>
 
-            {/* Microcopy */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-xs text-[#656B70] pt-2 border-t border-[#E5E7E8] w-full">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-[13px] sm:text-sm text-[#656B70] pt-3 border-t border-[#E5E7E8] w-full">
               <span className="font-medium text-[#171A1C]">
                 Built for university students.
               </span>
-              <span className="hidden sm:inline text-slate-300">•</span>
-              <span className="text-[#656B70] font-mono text-[11px]">
-                {SITE_CONFIG.languages.join(" · ")}
+
+              <span className="hidden sm:inline text-slate-300">
+                {"\u2022"}
+              </span>
+
+              <span className="text-[#656B70] text-[12px] sm:text-[13px]">
+                {SITE_CONFIG.languages[0]} {"\u00B7"}{" "}
+                {SITE_CONFIG.languages[1]} {"\u00B7"}{" "}
+                <span
+                  className="font-cairo font-semibold text-[#171A1C]"
+                  lang="ar"
+                  dir="rtl"
+                >
+                  {SITE_CONFIG.languages[2]}
+                </span>
               </span>
             </div>
           </div>
 
-          {/* Right Column: ~58% visual hero (BLENDER REPLACEMENT ZONE) */}
-          <div className="lg:col-span-7 relative flex justify-center items-center">
-            {/*
-              ============================================================
-              HERO BLENDER REPLACEMENT ZONE (data-blender-zone="hero-cv-match")
-              This entire composition is structured so that later a pre-rendered
-              video (<video src="/media/hero-blender.webm" poster="/media/hero-poster.png">)
-              can seamlessly replace this DOM/CSS composition.
-              ============================================================
-            */}
-            <div
-              id="hero-visual-zone"
-              data-blender-zone="hero-cv-match"
-              className="relative w-full max-w-[540px] aspect-[4/4.5] flex items-center justify-center"
-            >
-              {/* Subtle radial aura */}
-              <div className="absolute inset-0 bg-[#467A8F]/6 rounded-full filter blur-3xl -z-10" />
-
-              {/* CV Document Ingestion Flow (Floating Left Layer) */}
-              <div className="absolute -left-2 sm:-left-6 top-8 z-20 w-44 sm:w-48 p-3.5 rounded-2xl bg-white/95 backdrop-blur-md border border-[#E5E7E8] shadow-xl shadow-slate-900/5 animate-float-slow hidden xs:block">
-                <div className="flex items-center gap-2 mb-2 pb-2 border-b border-[#E5E7E8]">
-                  <div className="w-6 h-6 rounded-lg bg-[#F2F7F8] text-[#467A8F] flex items-center justify-center">
-                    <DocumentIcon className="w-3.5 h-3.5" />
-                  </div>
-                  <div>
-                    <div className="text-[11px] font-bold text-[#171A1C] leading-none">
-                      Sample_CV.pdf
-                    </div>
-                    <div className="text-[9px] text-[#467A8F] font-medium">
-                      Structured Intake
-                    </div>
-                  </div>
-                </div>
-
-                {/* Simulated extracted CV blocks */}
-                <div className="space-y-1.5 text-[9px] text-[#656B70]">
-                  <div className="flex justify-between items-center bg-[#F7F7F5] px-2 py-1 rounded">
-                    <span>Skills Extracted</span>
-                    <span className="font-semibold text-[#345B6B]">14 tags</span>
-                  </div>
-                  <div className="flex justify-between items-center bg-[#F7F7F5] px-2 py-1 rounded">
-                    <span>Projects Parsed</span>
-                    <span className="font-semibold text-[#171A1C]">3 projects</span>
-                  </div>
-                  <div className="flex justify-between items-center bg-[#F7F7F5] px-2 py-1 rounded">
-                    <span>Education</span>
-                    <span className="font-semibold text-[#171A1C]">CS Senior</span>
-                  </div>
-                </div>
-
-                {/* Flow indicator to phone */}
-                <div className="mt-2 pt-1 flex items-center justify-between text-[9px] text-[#467A8F] font-medium">
-                  <span>Structuring profile</span>
-                  <span className="w-2 h-2 rounded-full bg-[#467A8F] animate-ping" />
-                </div>
-              </div>
-
-              {/* Center Mobile Device Frame Mockup */}
-              <DeviceFrame className="z-10 transform scale-95 sm:scale-100 hover:scale-[1.01] transition-transform duration-300">
-                <div className="p-4 flex flex-col h-full bg-gradient-to-b from-[#F7F7F5] via-white to-[#F7F7F5]">
-                  {/* App Header */}
-                  <div className="flex items-center justify-between mb-4">
-                    <div>
-                      <div className="text-[10px] font-semibold text-[#467A8F] uppercase tracking-wider">
-                        Active Matchups
-                      </div>
-                      <div className="text-base font-bold text-[#171A1C]">
-                        Top Opportunities
-                      </div>
-                    </div>
-                    <div className="w-7 h-7 rounded-full bg-[#F2F7F8] border border-[#C7DDE3] text-[#345B6B] flex items-center justify-center text-xs font-bold">
-                      MB
-                    </div>
-                  </div>
-
-                  {/* Primary Hero Card: AI Engineering Intern 94% Match */}
-                  <div className="p-4 rounded-2xl bg-white border border-[#E5E7E8] shadow-sm relative overflow-hidden mb-3">
-                    <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-bl from-[#E3EEF1]/70 to-transparent rounded-bl-3xl pointer-events-none" />
-
-                    <div className="flex items-start justify-between mb-2.5">
-                      <div>
-                        <span className="text-[10px] font-semibold text-[#656B70] uppercase">
-                          Tech Forward Lab
-                        </span>
-                        <h4 className="text-sm font-bold text-[#171A1C] leading-tight">
-                          AI Engineering Intern
-                        </h4>
-                      </div>
-                      <span className="px-2.5 py-1 rounded-full bg-[#F2F7F8] border border-[#C7DDE3] text-[#2D4C59] text-xs font-bold flex items-center gap-1">
-                        <span className="w-1.5 h-1.5 rounded-full bg-[#467A8F]" />
-                        94% Match
-                      </span>
-                    </div>
-
-                    <p className="text-[11px] text-[#656B70] mb-3 leading-snug">
-                      Focus on NLP pipeline integration, LLM fine-tuning, and scalable inference services.
-                    </p>
-
-                    {/* Skill Match Breakdown inside Card */}
-                    <div className="space-y-1.5 pt-2 border-t border-[#E5E7E8] text-[10px]">
-                      <div className="flex items-center justify-between text-[#656B70]">
-                        <span>Profile Alignment</span>
-                        <span className="font-semibold text-[#345B6B]">Exceptional</span>
-                      </div>
-                      <div className="w-full bg-[#F7F7F5] h-1.5 rounded-full overflow-hidden">
-                        <div className="bg-gradient-to-r from-[#467A8F] to-[#78A9B8] h-full w-[94%]" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Secondary Card Sneak Peek */}
-                  <div className="p-3.5 rounded-xl bg-[#F7F7F5] border border-[#E5E7E8] opacity-80">
-                    <div className="flex items-center justify-between">
-                      <div>
-                        <div className="text-[9px] font-medium text-[#656B70]">
-                          Data Platform Inc
-                        </div>
-                        <div className="text-xs font-bold text-[#171A1C]">
-                          Machine Learning Fellow
-                        </div>
-                      </div>
-                      <span className="text-[11px] font-bold text-[#171A1C] bg-white px-2 py-0.5 rounded-md border border-[#E5E7E8]">
-                        89%
-                      </span>
-                    </div>
-                  </div>
-
-                  {/* Bottom Action */}
-                  <div className="mt-auto pt-3">
-                    <div className="w-full py-2.5 rounded-xl bg-[#171A1C] text-white text-center text-xs font-semibold shadow-xs flex items-center justify-center gap-1.5">
-                      <span>View Match Breakdown</span>
-                      <ArrowRightIcon className="w-3.5 h-3.5" />
-                    </div>
-                  </div>
-                </div>
-              </DeviceFrame>
-
-              {/* Floating Match Result Badge (Top Right) */}
-              <div className="absolute -right-2 sm:-right-4 top-14 z-20">
-                <FloatingSkillChip
-                  type="score"
-                  label="94% Match"
-                  subtext="Semantic + Skill Alignment"
-                />
-              </div>
-
-              {/* Floating Matched Evidence Chips */}
-              <div className="absolute -right-4 sm:-right-6 top-36 z-20 space-y-2 hidden sm:block">
-                <FloatingSkillChip label="Python" type="matched" />
-                <FloatingSkillChip label="FastAPI" type="matched" />
-                <FloatingSkillChip label="Machine Learning" type="matched" />
-              </div>
-
-              {/* Floating Missing Requirement Chip */}
-              <div className="absolute -right-2 sm:right-2 bottom-12 z-20">
-                <FloatingSkillChip
-                  label="Docker"
-                  type="missing"
-                  subtext="Recommended prior to application"
-                />
-              </div>
+          {/* DESKTOP: signature bow scene occupies the visual column. */}
+          <div
+            data-bow-track
+            className="hidden lg:block lg:col-span-7 relative h-[900px]"
+          >
+            <div className="sticky top-28 flex min-h-[300px] items-center justify-center pt-4">
+              <HeroBowScene className="w-full max-w-[820px]" />
             </div>
           </div>
         </div>

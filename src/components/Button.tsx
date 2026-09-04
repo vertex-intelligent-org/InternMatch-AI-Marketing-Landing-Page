@@ -1,4 +1,6 @@
-import React from "react";
+"use client";
+
+import React, { useRef } from "react";
 import Link from "next/link";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
@@ -8,6 +10,7 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   icon?: React.ReactNode;
   children: React.ReactNode;
   className?: string;
+  onActivate?: () => void;
 }
 
 export function Button({
@@ -17,15 +20,47 @@ export function Button({
   icon,
   children,
   className = "",
+  onClick,
+  onActivate,
   ...props
 }: ButtonProps) {
+  const glyphRef = useRef<HTMLSpanElement>(null);
+
+  const animateGlyph = () => {
+    if (!icon || !glyphRef.current) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion) return;
+
+    const glyph = glyphRef.current;
+
+    glyph.getAnimations().forEach((animation) => animation.cancel());
+    glyph.style.transform = "rotate(0deg)";
+
+    void glyph.offsetWidth;
+
+    glyph.animate(
+      [
+        { transform: "rotate(0deg)" },
+        { transform: "rotate(720deg)" },
+      ],
+      {
+        duration: 560,
+        easing: "cubic-bezier(0.22, 1, 0.36, 1)",
+      }
+    );
+  };
+
   const baseStyles =
-    "inline-flex items-center justify-center font-medium transition-all duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-full cursor-pointer select-none active:scale-[0.98]";
+    "group inline-flex items-center justify-center font-semibold transition-[background-color,border-color,box-shadow,transform,color] duration-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none rounded-full cursor-pointer select-none active:scale-[0.985]";
 
   const sizeStyles = {
-    sm: "text-xs px-3.5 py-1.5 gap-1.5",
-    md: "text-sm px-5 py-2.5 gap-2",
-    lg: "text-base px-6 py-3.5 gap-2.5 shadow-sm",
+    sm: "text-xs px-3.5 py-1.5 gap-2",
+    md: "text-sm px-5 py-2.5 gap-2.5",
+    lg: "text-base px-6 py-3.5 gap-3 shadow-sm",
   }[size];
 
   const variantStyles = {
@@ -39,35 +74,116 @@ export function Button({
       "bg-[#171C1F] hover:bg-[#20272B] text-[#F5F6F4] border border-[#2D4C59] shadow-sm",
   }[variant];
 
+  const glyphSizeStyles = {
+    sm: "w-[22px] h-[22px]",
+    md: "w-[26px] h-[26px]",
+    lg: "w-[30px] h-[30px]",
+  }[size];
+
+  const glyphVariantStyles = {
+    primary:
+      "border-white/65 bg-white/12 text-white",
+    secondary:
+      "border-[#467A8F]/35 bg-[#F2F7F8] text-[#2D4C59]",
+    ghost:
+      "border-[#467A8F]/30 bg-[#F2F7F8] text-[#2D4C59]",
+    dark:
+      "border-white/35 bg-white/8 text-[#F5F6F4]",
+  }[variant];
+
   const combinedStyles = `${baseStyles} ${sizeStyles} ${variantStyles} ${className}`;
 
+  const renderedIcon = icon ? (
+    <span
+      ref={glyphRef}
+      className={`${glyphSizeStyles} ${glyphVariantStyles} inline-flex flex-none items-center justify-center rounded-full border will-change-transform`}
+      aria-hidden="true"
+    >
+      <span className="inline-flex items-center justify-center">
+        {icon}
+      </span>
+    </span>
+  ) : null;
+
+  const activate = () => {
+    animateGlyph();
+    onActivate?.();
+  };
+
   if (href) {
-    const isInternal = href.startsWith("#") || href.startsWith("/");
-    if (isInternal) {
+    const isHashLink = href.startsWith("#");
+    const isInternalPage = href.startsWith("/");
+
+    if (isHashLink) {
       return (
-        <Link href={href} className={combinedStyles}>
+        <Link
+          href={href}
+          className={combinedStyles}
+          onClick={(event) => {
+            event.preventDefault();
+            activate();
+
+            window.setTimeout(() => {
+              const target = document.querySelector(href);
+
+              if (target) {
+                window.history.pushState(null, "", href);
+                target.scrollIntoView({
+                  behavior: "smooth",
+                  block: "start",
+                });
+              }
+            }, 120);
+          }}
+        >
           {children}
-          {icon && <span className="inline-flex transition-transform group-hover:translate-x-0.5">{icon}</span>}
+          {renderedIcon}
         </Link>
       );
     }
+
+    if (isInternalPage) {
+      return (
+        <Link
+          href={href}
+          className={combinedStyles}
+          onClick={() => {
+            activate();
+          }}
+        >
+          {children}
+          {renderedIcon}
+        </Link>
+      );
+    }
+
     return (
       <a
         href={href}
         className={combinedStyles}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          activate();
+        }}
       >
         {children}
-        {icon && <span className="inline-flex transition-transform group-hover:translate-x-0.5">{icon}</span>}
+        {renderedIcon}
       </a>
     );
   }
 
   return (
-    <button className={combinedStyles} {...props}>
+    <button
+      className={combinedStyles}
+      {...props}
+      onClick={(event) => {
+        activate();
+        onClick?.(event);
+      }}
+    >
       {children}
-      {icon && <span className="inline-flex transition-transform group-hover:translate-x-0.5">{icon}</span>}
+      {renderedIcon}
     </button>
   );
 }

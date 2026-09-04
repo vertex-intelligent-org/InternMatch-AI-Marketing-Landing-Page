@@ -7,34 +7,44 @@ interface LogoProps {
   className?: string;
 }
 
-export function Logo({ size = "md", showText = true, className = "" }: LogoProps) {
-  /*
-    Compact sizing prevents the presentation margins from overwhelming navbar layout.
-    Ready to swap for a transparent PNG or vector SVG without modifying consumer layout.
-  */
-  const iconDimensions = {
-    sm: { sizeClass: "w-7 h-7", px: 28 },
-    md: { sizeClass: "w-8 h-8", px: 32 },
-    lg: { sizeClass: "w-10 h-10", px: 40 },
+export function Logo({
+  size = "md",
+  showText = true,
+  className = "",
+}: LogoProps) {
+  const dimensions = {
+    sm: {
+      iconClass: "w-8 h-8",
+      textClass: "text-[17px]",
+      px: 32,
+    },
+    md: {
+      iconClass: "w-10 h-10 sm:w-11 sm:h-11",
+      textClass: "text-[20px] sm:text-[22px]",
+      px: 44,
+    },
+    lg: {
+      iconClass: "w-12 h-12 sm:w-[52px] sm:h-[52px]",
+      textClass: "text-[23px] sm:text-[25px]",
+      px: 52,
+    },
   }[size];
 
   return (
-    <div className={`flex items-center gap-2.5 select-none ${className}`}>
-      <div
-        className={`relative ${iconDimensions.sizeClass} rounded-lg overflow-hidden flex-shrink-0 shadow-xs border border-[#E5E7E8] bg-white`}
-      >
-        <Image
-          src="/branding/internmatch-icon.png"
-          alt="InternMatch AI Logo"
-          width={iconDimensions.px}
-          height={iconDimensions.px}
-          className="w-full h-full object-contain"
-          priority
-        />
-      </div>
+    <div className={`flex items-center gap-3 select-none ${className}`}>
+      <Image
+        src="/branding/internmatch-icon.png"
+        alt=""
+        width={dimensions.px}
+        height={dimensions.px}
+        className={`${dimensions.iconClass} object-contain flex-shrink-0`}
+        priority
+      />
 
       {showText && (
-        <span className="text-base sm:text-lg font-bold tracking-tight text-[#171A1C]">
+        <span
+          className={`${dimensions.textClass} font-extrabold tracking-[-0.03em] text-[#171A1C] leading-none whitespace-nowrap`}
+        >
           InternMatch AI
         </span>
       )}

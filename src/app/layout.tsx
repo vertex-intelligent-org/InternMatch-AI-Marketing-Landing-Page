@@ -1,11 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bricolage_Grotesque, Cairo } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({
+const bricolage = Bricolage_Grotesque({
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-inter",
+  variable: "--font-bricolage",
+});
+
+const cairo = Cairo({
+  subsets: ["arabic"],
+  display: "swap",
+  variable: "--font-cairo",
 });
 
 export const metadata: Metadata = {
@@ -63,7 +69,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className={`${inter.variable} font-sans`}>
+    <html lang="en" className={`${bricolage.variable} ${cairo.variable}`}>
       <body className="min-h-screen bg-[#F7F7F5] text-[#171A1C] antialiased selection:bg-[#467A8F] selection:text-white">
         {children}
       </body>
