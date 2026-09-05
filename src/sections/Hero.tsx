@@ -3,6 +3,7 @@
 import React from "react";
 import { Button } from "@/components/Button";
 import { HeroBowScene } from "@/components/HeroBowScene";
+import { HeroMatchingNetwork } from "@/components/HeroMatchingNetwork";
 import { ArrowRightIcon, SparklesIcon, PlayIcon } from "@/components/Icons";
 import { SITE_CONFIG } from "@/lib/constants";
 
@@ -366,7 +367,9 @@ export function Hero() {
               className="relative w-full h-[640px] sm:h-[700px] lg:hidden mt-1"
             >
               <div className="sticky top-[96px] pt-4">
-                <HeroBowScene className="w-full max-w-[680px] mx-auto" />
+                <HeroMatchingNetwork mode="mobile" className="w-full max-w-[680px] mx-auto">
+                  <HeroBowScene className="w-full" />
+                </HeroMatchingNetwork>
               </div>
             </div>
 
@@ -427,7 +430,9 @@ export function Hero() {
             className="hidden lg:block lg:col-span-7 relative h-[900px]"
           >
             <div className="sticky top-28 flex min-h-[300px] items-center justify-center pt-4">
-              <HeroBowScene className="w-full max-w-[820px]" />
+              <HeroMatchingNetwork mode="desktop" className="w-full max-w-[820px]">
+                <HeroBowScene className="w-full" />
+              </HeroMatchingNetwork>
             </div>
           </div>
         </div>
