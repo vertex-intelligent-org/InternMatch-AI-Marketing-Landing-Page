@@ -124,13 +124,18 @@ function progressToStep(p: number): number {
 }
 
 export function Problem() {
-  const [progress, setProgress] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [cardWidth, setCardWidth] = useState(320);
   const [viewportWidth, setViewportWidth] = useState(390);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const runwayRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const activeStepRef = useRef(0);
+  const inRangeRef = useRef(false);
+
+  const cardGap = 16;
 
   // Check prefers-reduced-motion
   useEffect(() => {
@@ -160,57 +165,121 @@ export function Problem() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
-  // Scroll-driven progress tracking on mobile
+  // High-performance mobile scroll tracking:
+  // direct GPU transform every frame, React state only when active card changes.
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || viewportWidth >= 768) return;
 
-    let ticking = false;
+    let rafId: number | null = null;
 
     const updateScroll = () => {
-      if (!runwayRef.current) return;
+      rafId = null;
+
+      if (!runwayRef.current || !trackRef.current) return;
+
       const rect = runwayRef.current.getBoundingClientRect();
-      const stickyTop = 58; // Sits right below mobile navbar
-      const stickyHeight = window.innerHeight - stickyTop;
-      const maxScrollDistance = rect.height - stickyHeight;
+      const stickyTop = 96;
 
-      if (maxScrollDistance <= 0) {
-        ticking = false;
-        return;
-      }
+      const stickyHeight =
+        stickyRef.current?.offsetHeight ??
+        Math.min(window.innerHeight - stickyTop, 560);
 
-      // Distance scrolled past when runway top hit stickyTop
+      const maxScrollDistance =
+        runwayRef.current.offsetHeight - stickyHeight;
+
+      if (maxScrollDistance <= 0) return;
+
       const scrollOffset = stickyTop - rect.top;
-      const rawProgress = Math.min(Math.max(scrollOffset / maxScrollDistance, 0), 1);
-      setProgress(rawProgress);
-      ticking = false;
-    };
 
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(updateScroll);
-        ticking = true;
+      const rawProgress = Math.min(
+        Math.max(scrollOffset / maxScrollDistance, 0),
+        1
+      );
+
+      const stepPosition = progressToStep(rawProgress);
+      const stepDistance = cardWidth + cardGap;
+
+      const centerOffset = Math.max(
+        (viewportWidth - cardWidth) / 2 - 16,
+        0
+      );
+
+      const nextTranslateX =
+        centerOffset - stepPosition * stepDistance;
+
+      trackRef.current.style.transform =
+        `translate3d(${nextTranslateX}px, 0, 0)`;
+
+      const nextActiveStep = Math.min(
+        Math.max(Math.round(stepPosition), 0),
+        2
+      );
+
+      if (activeStepRef.current !== nextActiveStep) {
+        activeStepRef.current = nextActiveStep;
+        setActiveStep(nextActiveStep);
       }
     };
 
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
-    updateScroll();
+    const requestScrollUpdate = () => {
+      if (!inRangeRef.current || rafId !== null) return;
+
+      rafId = window.requestAnimationFrame(updateScroll);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inRangeRef.current = entry?.isIntersecting ?? false;
+
+        if (inRangeRef.current) {
+          if (rafId !== null) {
+            window.cancelAnimationFrame(rafId);
+          }
+
+          rafId = window.requestAnimationFrame(updateScroll);
+        }
+      },
+      {
+        rootMargin: "100% 0px 100% 0px",
+      }
+    );
+
+    if (runwayRef.current) {
+      observer.observe(runwayRef.current);
+    }
+
+    window.addEventListener("scroll", requestScrollUpdate, {
+      passive: true,
+    });
+
+    window.addEventListener("resize", requestScrollUpdate, {
+      passive: true,
+    });
+
+    rafId = window.requestAnimationFrame(updateScroll);
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      observer.disconnect();
+
+      window.removeEventListener(
+        "scroll",
+        requestScrollUpdate
+      );
+
+      window.removeEventListener(
+        "resize",
+        requestScrollUpdate
+      );
+
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
     };
-  }, [prefersReducedMotion]);
-
-  const stepPosition = progressToStep(progress);
-  const activeStep = Math.min(Math.max(Math.round(stepPosition), 0), 2);
-
-  // Math for horizontal card centering:
-  // centerOffset places the active card in the exact horizontal center of the viewport
-  const cardGap = 16;
-  const stepDistance = cardWidth + cardGap;
-  const centerOffset = Math.max((viewportWidth - cardWidth) / 2 - 16, 0);
-  const translateX = centerOffset - stepPosition * stepDistance;
+  }, [
+    prefersReducedMotion,
+    cardWidth,
+    viewportWidth,
+  ]);
 
   // Jump to specific card when tapping indicator pills
   const scrollToCard = (index: number) => {
@@ -384,11 +453,8 @@ export function Problem() {
                 {/* Horizontal Card Presentation: Sits close beneath progress pills with generous card proportions */}
                 <div className="relative w-full overflow-hidden mt-2 mb-0 py-1">
                   <div
+                    ref={trackRef}
                     className="flex items-stretch will-change-transform"
-                    style={{
-                      transform: `translateX(${translateX}px)`,
-                      transition: "transform 140ms cubic-bezier(0.25, 1, 0.5, 1)",
-                    }}
                   >
                     {PROBLEMS.map((problem, idx) => {
                       const MicroIcon = MICRO_ANIMATIONS[idx];

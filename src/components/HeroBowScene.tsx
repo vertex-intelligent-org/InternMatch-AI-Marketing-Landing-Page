@@ -296,6 +296,42 @@ export function HeroBowScene({
     ) => `${mode}:${frame}`;
 
     /*
+     * Keep decoded frame memory bounded.
+     *
+     * Source WebP files are small on disk, but decoded images can
+     * occupy several MB each in memory. We therefore retain only a
+     * compact working set and rely on the browser HTTP cache when an
+     * older frame is needed again.
+     */
+    const trimDecodedFrameCache = () => {
+      const cache =
+        imageCacheRef.current;
+
+      const maxEntries =
+        modeRef.current === "mobile"
+          ? 16
+          : 20;
+
+      while (
+        cache.size >
+        maxEntries
+      ) {
+        const oldestKey =
+          cache.keys().next().value;
+
+        if (
+          typeof oldestKey !==
+          "string"
+        ) {
+          break;
+        }
+
+        cache.delete(
+          oldestKey
+        );
+      }
+    };
+    /*
      * --------------------------------------------------------
      * LOAD FRAME
      * --------------------------------------------------------
@@ -314,6 +350,19 @@ export function HeroBowScene({
         );
 
       if (cached) {
+        /*
+         * Move recently used frame to the end of the Map so the
+         * bounded cache behaves like a lightweight LRU.
+         */
+        imageCacheRef.current.delete(
+          key
+        );
+
+        imageCacheRef.current.set(
+          key,
+          cached
+        );
+
         return Promise.resolve(
           cached
         );
@@ -360,6 +409,8 @@ export function HeroBowScene({
                     key,
                     image
                   );
+
+                  trimDecodedFrameCache();
 
                   loadingRef.current.delete(
                     key
@@ -1361,22 +1412,34 @@ export function HeroBowScene({
       (
         mode: SequenceMode
       ) => {
+        /*
+         * Do NOT decode all 110 frames at page load.
+         *
+         * Keep strategic anchors available for a smooth nearest-frame
+         * fallback. Exact frames are still loaded on demand while the
+         * user scrolls.
+         */
+        const sparseFrames:
+          number[] = [];
+
+        for (
+          let frame = FRAME_START;
+          frame <= FRAME_END;
+          frame += 10
+        ) {
+          sparseFrames.push(
+            frame
+          );
+        }
+
+        sparseFrames.push(
+          FRAME_END
+        );
+
         const frames = [
           ...new Set([
             ...PRELOAD_PRIORITY_FRAMES,
-
-            ...Array.from(
-              {
-                length:
-                  FRAME_COUNT,
-              },
-              (
-                _,
-                index
-              ) =>
-                FRAME_START +
-                index
-            ),
+            ...sparseFrames,
           ]),
         ];
 
@@ -1392,10 +1455,14 @@ export function HeroBowScene({
               return;
             }
 
+            /*
+             * Only two decoded images per batch to avoid decode spikes
+             * on the main thread / image decoder.
+             */
             const batch =
               frames.slice(
                 index,
-                index + 4
+                index + 2
               );
 
             index +=
@@ -1421,14 +1488,20 @@ export function HeroBowScene({
               preloadTimer =
                 window.setTimeout(
                   loadBatch,
-                  30
+                  120
                 );
             }
           };
 
-        loadBatch();
+        /*
+         * Let the first hero frame paint before background preloading.
+         */
+        preloadTimer =
+          window.setTimeout(
+            loadBatch,
+            100
+          );
       };
-
     /*
      * --------------------------------------------------------
      * INITIALIZE
@@ -1575,6 +1648,15 @@ export function HeroBowScene({
           preloadTimer
         );
       }
+
+      /*
+       * Release decoded frame references.
+       * Browser HTTP cache remains free to reuse downloaded files.
+       */
+      imageCacheRef.current.clear();
+      loadingRef.current.clear();
+
+      cropPromiseRef.current = {};
     };
   }, []);
 

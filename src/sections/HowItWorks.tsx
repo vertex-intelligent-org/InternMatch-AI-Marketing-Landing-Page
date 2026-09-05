@@ -142,13 +142,18 @@ function progressToWorkflowStep(progress: number) {
 }
 
 export function HowItWorks() {
-  const [progress, setProgress] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [cardWidth, setCardWidth] = useState(320);
   const [viewportWidth, setViewportWidth] = useState(390);
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
   const runwayRef = useRef<HTMLDivElement>(null);
   const stickyRef = useRef<HTMLDivElement>(null);
+  const trackRef = useRef<HTMLDivElement>(null);
+  const activeStepRef = useRef(0);
+  const inRangeRef = useRef(false);
+
+  const cardGap = 16;
 
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -181,20 +186,23 @@ export function HowItWorks() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  // High-performance mobile workflow tracking:
+  // scroll updates GPU transform directly; React only changes active card state.
   useEffect(() => {
-    if (prefersReducedMotion) return;
+    if (prefersReducedMotion || viewportWidth >= 768) return;
 
-    let ticking = false;
+    let rafId: number | null = null;
 
     const updateProgress = () => {
-      if (!runwayRef.current) {
-        ticking = false;
-        return;
-      }
+      rafId = null;
 
-      const rect = runwayRef.current.getBoundingClientRect();
+      if (!runwayRef.current || !trackRef.current) return;
+
+      const rect =
+        runwayRef.current.getBoundingClientRect();
 
       const stickyTop = 96;
+
       const stickyHeight =
         stickyRef.current?.offsetHeight ??
         Math.min(window.innerHeight - stickyTop, 560);
@@ -202,62 +210,109 @@ export function HowItWorks() {
       const maxScrollDistance =
         runwayRef.current.offsetHeight - stickyHeight;
 
-      if (maxScrollDistance <= 0) {
-        ticking = false;
-        return;
-      }
+      if (maxScrollDistance <= 0) return;
 
       const scrollOffset = stickyTop - rect.top;
 
-      const raw = Math.min(
+      const rawProgress = Math.min(
         Math.max(scrollOffset / maxScrollDistance, 0),
         1
       );
 
-      setProgress(raw);
-      ticking = false;
+      const stepPosition =
+        progressToWorkflowStep(rawProgress);
+
+      const stepDistance = cardWidth + cardGap;
+
+      const centerOffset = Math.max(
+        (viewportWidth - cardWidth) / 2 - 16,
+        0
+      );
+
+      const nextTranslateX =
+        centerOffset - stepPosition * stepDistance;
+
+      trackRef.current.style.transform =
+        `translate3d(${nextTranslateX}px, 0, 0)`;
+
+      const nextActiveStep = Math.min(
+        Math.max(Math.round(stepPosition), 0),
+        4
+      );
+
+      if (activeStepRef.current !== nextActiveStep) {
+        activeStepRef.current = nextActiveStep;
+        setActiveStep(nextActiveStep);
+      }
     };
 
-    const handleScroll = () => {
-      if (ticking) return;
+    const requestScrollUpdate = () => {
+      if (!inRangeRef.current || rafId !== null) return;
 
-      ticking = true;
+      rafId =
+        window.requestAnimationFrame(updateProgress);
+    };
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        inRangeRef.current =
+          entry?.isIntersecting ?? false;
+
+        if (inRangeRef.current) {
+          if (rafId !== null) {
+            window.cancelAnimationFrame(rafId);
+          }
+
+          rafId =
+            window.requestAnimationFrame(updateProgress);
+        }
+      },
+      {
+        rootMargin: "100% 0px 100% 0px",
+      }
+    );
+
+    if (runwayRef.current) {
+      observer.observe(runwayRef.current);
+    }
+
+    window.addEventListener(
+      "scroll",
+      requestScrollUpdate,
+      { passive: true }
+    );
+
+    window.addEventListener(
+      "resize",
+      requestScrollUpdate,
+      { passive: true }
+    );
+
+    rafId =
       window.requestAnimationFrame(updateProgress);
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll, { passive: true });
-
-    updateProgress();
 
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      observer.disconnect();
+
+      window.removeEventListener(
+        "scroll",
+        requestScrollUpdate
+      );
+
+      window.removeEventListener(
+        "resize",
+        requestScrollUpdate
+      );
+
+      if (rafId !== null) {
+        window.cancelAnimationFrame(rafId);
+      }
     };
-  }, [prefersReducedMotion]);
-
-  const stepPosition = progressToWorkflowStep(progress);
-
-  const activeStep = Math.min(
-    Math.max(Math.round(stepPosition), 0),
-    4
-  );
-
-  const cardGap = 16;
-  const stepDistance = cardWidth + cardGap;
-
-  /*
-    Parent mobile runway uses -mx-4 + px-4.
-    Subtract 16px so the active card is genuinely centered
-    in the phone viewport.
-  */
-  const centerOffset = Math.max(
-    (viewportWidth - cardWidth) / 2 - 16,
-    0
-  );
-
-  const translateX =
-    centerOffset - stepPosition * stepDistance;
+  }, [
+    prefersReducedMotion,
+    cardWidth,
+    viewportWidth,
+  ]);
 
   return (
     <section
@@ -601,12 +656,8 @@ export function HowItWorks() {
                   {/* Horizontal workflow track */}
                   <div className="relative w-full overflow-hidden py-1">
                     <div
+                      ref={trackRef}
                       className="flex items-stretch will-change-transform"
-                      style={{
-                        transform: `translateX(${translateX}px)`,
-                        transition:
-                          "transform 150ms cubic-bezier(0.25, 1, 0.5, 1)",
-                      }}
                     >
                       {HOW_IT_WORKS_STEPS.map((step, idx) => {
                         const WorkflowVisual = WORKFLOW_VISUALS[idx];
