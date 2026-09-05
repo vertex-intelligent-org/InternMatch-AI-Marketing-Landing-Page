@@ -77,12 +77,12 @@ export function Footer() {
               </li>
               <li>
                 <Link href="/terms" className="hover:text-[#171A1C] transition-colors">
-                  Terms of Service
+                  Terms of Use
                 </Link>
               </li>
               <li>
                 <Link href="/data-deletion" className="hover:text-[#171A1C] transition-colors">
-                  Data &amp; Account Deletion
+                  Data Deletion
                 </Link>
               </li>
             </ul>
