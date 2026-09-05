@@ -2,7 +2,6 @@ import React from "react";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/sections/Hero";
-import { CredibilityStrip } from "@/sections/CredibilityStrip";
 import { Problem } from "@/sections/Problem";
 import { HowItWorks } from "@/sections/HowItWorks";
 import { ProductShowcase } from "@/sections/ProductShowcase";
@@ -28,10 +27,7 @@ export default function Home() {
         {/* 02: Hero with 42/58 split, Device Mockup & Blender Replacement Zone */}
         <Hero />
 
-        {/* 03: Builder Attribution & Credibility Strip */}
-        <CredibilityStrip />
-
-        {/* 04: The Problem & Major Brand Statement */}
+        {/* 03: The Problem & Major Brand Statement */}
         <Problem />
 
         {/* 05: How It Works (Connected Narrative Transformation) */}

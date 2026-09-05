@@ -18,7 +18,7 @@ export function FinalCTA() {
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
         <div className="p-8 sm:p-14 md:p-16 rounded-[40px] bg-white border border-[#E5E7E8] shadow-xl shadow-slate-900/5 relative overflow-hidden">
-          <div className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-semibold tracking-wider uppercase mb-6 bg-[#F2F7F8] text-[#2D4C59] border border-[#C7DDE3]">
+          <div className="section-eyebrow mb-6">
             <SparklesIcon className="w-3.5 h-3.5 text-[#467A8F]" />
             <span>Launch Readiness</span>
           </div>

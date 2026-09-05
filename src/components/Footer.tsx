@@ -122,7 +122,7 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom Bar with correct builder attribution */}
+        {/* Bottom Bar with correct builder attribution and language availability */}
         <div className="mt-12 pt-8 border-t border-[#E5E7E8] flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-[#656B70]">
           <p>
             Independent student-built product by{" "}
@@ -131,7 +131,16 @@ export function Footer() {
             </span>
             .
           </p>
-          <p>© 2026 InternMatch AI. All rights reserved.</p>
+          <div className="flex flex-wrap items-center gap-3 text-xs">
+            <span>
+              {SITE_CONFIG.languages[0]} · {SITE_CONFIG.languages[1]} ·{" "}
+              <span className="font-cairo font-medium text-[#171A1C]" lang="ar" dir="rtl">
+                {SITE_CONFIG.languages[2]}
+              </span>
+            </span>
+            <span className="hidden sm:inline text-slate-300">•</span>
+            <p>© 2026 InternMatch AI. All rights reserved.</p>
+          </div>
         </div>
       </div>
     </footer>

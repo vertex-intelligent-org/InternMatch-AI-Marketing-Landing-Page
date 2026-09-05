@@ -3,15 +3,15 @@
 import React from "react";
 import { Button } from "@/components/Button";
 import { HeroBowScene } from "@/components/HeroBowScene";
+import { HeroCapsule } from "@/components/HeroCapsule";
 import { HeroMatchingNetwork } from "@/components/HeroMatchingNetwork";
-import { ArrowRightIcon, SparklesIcon, PlayIcon } from "@/components/Icons";
-import { SITE_CONFIG } from "@/lib/constants";
+import { ArrowRightIcon, PlayIcon } from "@/components/Icons";
 
 export function Hero() {
   return (
     <section
       id="hero"
-      className="relative pt-28 sm:pt-32 md:pt-40 pb-16 md:pb-24 overflow-x-clip overflow-y-visible isolate"
+      className="relative pt-28 sm:pt-32 md:pt-40 pb-4 md:pb-12 overflow-x-clip overflow-y-visible isolate"
     >
       {/* === INTERNMATCH HERO AURORA START === */}
 
@@ -343,10 +343,7 @@ export function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
           <div className="lg:col-span-5 flex flex-col items-start text-left z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F2F7F8] border border-[#C7DDE3] text-[13px] sm:text-sm font-semibold text-[#2D4C59] mb-5 backdrop-blur-xs">
-              <SparklesIcon className="w-3.5 h-3.5 text-[#467A8F]" />
-              <span>AI-powered internship matching for university students</span>
-            </div>
+            <HeroCapsule />
 
             <h1 className="text-[46px] sm:text-[54px] md:text-[64px] font-extrabold tracking-[-0.035em] text-[#171A1C] leading-[1.02] mb-0">
               Stop searching.
@@ -379,7 +376,7 @@ export function Hero() {
               from discovery to application.
             </p>
 
-            <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto mb-6">
+            <div className="flex flex-wrap items-center gap-3.5 w-full sm:w-auto">
               <Button
                 href="#demo"
                 variant="primary"
@@ -399,28 +396,6 @@ export function Hero() {
               >
                 Explore InternMatch
               </Button>
-            </div>
-
-            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 text-[13px] sm:text-sm text-[#656B70] pt-3 border-t border-[#E5E7E8] w-full">
-              <span className="font-medium text-[#171A1C]">
-                Built for university students.
-              </span>
-
-              <span className="hidden sm:inline text-slate-300">
-                {"\u2022"}
-              </span>
-
-              <span className="text-[#656B70] text-[12px] sm:text-[13px]">
-                {SITE_CONFIG.languages[0]} {"\u00B7"}{" "}
-                {SITE_CONFIG.languages[1]} {"\u00B7"}{" "}
-                <span
-                  className="font-cairo font-semibold text-[#171A1C]"
-                  lang="ar"
-                  dir="rtl"
-                >
-                  {SITE_CONFIG.languages[2]}
-                </span>
-              </span>
             </div>
           </div>
 

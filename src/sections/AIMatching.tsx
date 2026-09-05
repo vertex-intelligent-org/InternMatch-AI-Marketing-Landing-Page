@@ -12,7 +12,7 @@ export function AIMatching() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 bg-[#20272B] text-[#A3C7D1] border border-[#2D4C59]">
+          <span className="section-eyebrow section-eyebrow-dark mb-4">
             <SparklesIcon className="w-3 h-3 text-[#78A9B8]" />
             Engineering Philosophy
           </span>

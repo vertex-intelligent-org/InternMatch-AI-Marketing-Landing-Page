@@ -31,7 +31,7 @@ export function Logo({
   }[size];
 
   return (
-    <div className={`flex items-center gap-3 select-none ${className}`}>
+    <div className={`flex items-center gap-2 sm:gap-3 select-none ${className}`}>
       <Image
         src="/branding/internmatch-icon.png"
         alt=""

@@ -3,10 +3,10 @@ import { CheckIcon, SparklesIcon } from "@/components/Icons";
 
 export function ProductShowcase() {
   return (
-    <section id="product" className="py-24 sm:py-32 space-y-28 md:space-y-36">
+    <section id="product" className="pt-0 pb-24 md:py-32 space-y-28 md:space-y-36">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-16 sm:mb-24">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 bg-[#F2F7F8] text-[#2D4C59] border border-[#C7DDE3]">
+          <span className="section-eyebrow mb-4">
             Product Capabilities
           </span>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#171A1C] leading-[1.12]">

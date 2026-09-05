@@ -15,7 +15,7 @@ export function Demo() {
 
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12 sm:mb-16">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold tracking-wider uppercase mb-4 bg-[#F2F7F8] text-[#2D4C59] border border-[#C7DDE3]">
+          <span className="section-eyebrow mb-4">
             <SparklesIcon className="w-3 h-3 text-[#467A8F]" />
             Product Walkthrough
           </span>
