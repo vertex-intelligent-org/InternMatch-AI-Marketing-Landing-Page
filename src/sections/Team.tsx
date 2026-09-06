@@ -1,137 +1,147 @@
-import React from "react";
-import { BUILDERS } from "@/lib/constants";
-import { GitHubIcon, LinkedInIcon, GlobeIcon } from "@/components/Icons";
+import Image from "next/image";
+import { BUILDERS, SITE_CONFIG } from "@/lib/constants";
+import {
+  GitHubIcon,
+  LinkedInIcon,
+  GlobeIcon,
+} from "@/components/Icons";
 
 export function Team() {
   return (
-    <section id="team" className="py-24 sm:py-32 bg-[#F2F7F8]/30 border-y border-[#E5E7E8]">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-16 sm:mb-20">
+    <section
+      id="team"
+      className="relative overflow-hidden border-y border-[#E5E7E8] bg-[#F7F7F5] py-20 sm:py-28"
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-0 h-[380px] w-[780px] -translate-x-1/2 rounded-full bg-[#467A8F]/8 blur-[125px]"
+      />
+
+      <div className="relative z-10 mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
           <span className="section-eyebrow mb-4">
             Founding Team
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#171A1C] leading-[1.12]">
+
+          <h2 className="text-3xl font-extrabold leading-[1.08] tracking-tight text-[#171A1C] sm:text-4xl md:text-5xl">
             Meet the builders.
           </h2>
-          <p className="mt-4 text-base sm:text-lg text-[#656B70] leading-relaxed font-normal">
-            The student builders behind the architecture, engineering, and product experience of InternMatch AI.
+
+          <p className="mx-auto mt-4 max-w-2xl text-sm leading-relaxed text-[#656B70] sm:text-base">
+            The people behind the architecture, engineering and product
+            experience of InternMatch AI.
           </p>
+
+          <div className="mt-5 flex justify-center">
+            <span className="rounded-full border border-[#D7E1E4] bg-white px-3.5 py-2 text-[10px] font-semibold text-[#52666E] shadow-sm sm:text-xs">
+              {SITE_CONFIG.builders.shortContext}
+            </span>
+          </div>
         </div>
 
-        {/* Two Equal Premium Founder Cards */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-          {BUILDERS.map((builder) => (
-            <div
-              key={builder.name}
-              className="p-8 sm:p-10 rounded-3xl bg-white border border-[#E5E7E8] shadow-xs hover:shadow-md hover:border-[#C7DDE3] transition-all duration-200 flex flex-col justify-between"
-            >
-              <div>
-                {/* Avatar / Placeholder */}
-                <div className="flex items-center gap-4 mb-6">
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-[#20272B] to-[#171C1F] text-[#A3C7D1] font-bold text-xl flex items-center justify-center shadow-xs border border-[#2D4C59]">
-                    {builder.name
-                      .split(" ")
-                      .map((n) => n[0])
-                      .join("")}
-                  </div>
-                  <div>
-                    <h3 className="text-2xl font-bold text-[#171A1C] tracking-tight">
-                      {builder.name}
-                    </h3>
-                    <p className="text-xs font-semibold text-[#345B6B] uppercase tracking-wider mt-0.5">
+        <div className="mx-auto grid max-w-5xl gap-5 md:grid-cols-2 lg:gap-7">
+          {BUILDERS.map((builder) => {
+            const hasLinks = Boolean(
+              builder.links.linkedin ||
+                builder.links.github ||
+                builder.links.portfolio,
+            );
+
+            return (
+              <article
+                key={builder.name}
+                className="group overflow-hidden rounded-[30px] border border-[#D7DEE2] bg-white shadow-[0_16px_45px_rgba(23,26,28,0.07)] transition-[transform,box-shadow,border-color] duration-300 hover:-translate-y-1 hover:border-[#B8CDD4] hover:shadow-[0_22px_55px_rgba(23,26,28,0.1)]"
+              >
+                <div className="relative aspect-[4/4.6] overflow-hidden bg-[#E9ECEC] sm:aspect-[4/4.25]">
+                  <Image
+                    src={builder.image}
+                    alt={`${builder.name}, ${builder.role} of InternMatch AI`}
+                    fill
+                    sizes="(max-width: 767px) 100vw, 50vw"
+                    className="object-cover object-top transition-transform duration-500 group-hover:scale-[1.015]"
+                  />
+
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 h-[32%] bg-gradient-to-t from-[#171C1F]/70 via-[#171C1F]/20 to-transparent"
+                  />
+
+                  <div className="absolute bottom-4 left-4">
+                    <span className="rounded-full border border-white/25 bg-[#171C1F]/75 px-3 py-1.5 text-[10px] font-bold uppercase tracking-[0.13em] text-white backdrop-blur-md">
                       {builder.role}
-                    </p>
-                    <p className="text-xs text-[#656B70] mt-0.5">
-                      Üsküdar University · AISS Club
-                    </p>
+                    </span>
                   </div>
                 </div>
 
-                {/* Focus Areas */}
-                <div className="mb-6">
-                  <div className="text-[11px] font-bold text-[#656B70] uppercase tracking-wider mb-2.5">
-                    Engineering Focus
+                <div className="p-6 sm:p-7">
+                  <h3 className="text-2xl font-extrabold tracking-tight text-[#171A1C] sm:text-[28px]">
+                    {builder.name}
+                  </h3>
+
+                  <p className="mt-1 text-xs font-semibold text-[#467A8F]">
+                    Üsküdar University · AISS Club
+                  </p>
+
+                  <div className="mt-6">
+                    <div className="mb-2.5 text-[10px] font-bold uppercase tracking-[0.14em] text-[#7A878C]">
+                      Engineering Focus
+                    </div>
+
+                    <div className="flex flex-wrap gap-2">
+                      {builder.areas.map((area) => (
+                        <span
+                          key={area}
+                          className="rounded-xl border border-[#DCE3E5] bg-[#F4F6F6] px-3 py-1.5 text-[11px] font-semibold text-[#344249]"
+                        >
+                          {area}
+                        </span>
+                      ))}
+                    </div>
                   </div>
-                  <div className="flex flex-wrap gap-2">
-                    {builder.areas.map((area) => (
-                      <span
-                        key={area}
-                        className="px-3 py-1 rounded-xl bg-[#F7F7F5] border border-[#E5E7E8] text-xs font-medium text-[#171A1C]"
-                      >
-                        {area}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              </div>
 
-              {/* Social / Profile Links (Graceful fallback when URL is null) */}
-              <div className="pt-6 border-t border-[#E5E7E8] flex items-center justify-between text-xs text-[#656B70]">
-                <span className="text-[11px] font-medium text-[#656B70]">Profiles:</span>
-                <div className="flex items-center gap-2">
-                  {/* LinkedIn */}
-                  {builder.links.linkedin ? (
-                    <a
-                      href={builder.links.linkedin}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-[#F7F7F5] hover:bg-[#F2F7F8] text-[#171A1C] hover:text-[#345B6B] transition-colors border border-[#E5E7E8]"
-                      aria-label={`${builder.name} LinkedIn`}
-                    >
-                      <LinkedInIcon className="w-4 h-4" />
-                    </a>
-                  ) : (
-                    <span
-                      className="p-2 rounded-lg bg-[#F7F7F5] text-slate-300 cursor-not-allowed border border-[#E5E7E8]"
-                      title="LinkedIn link coming soon"
-                    >
-                      <LinkedInIcon className="w-4 h-4" />
-                    </span>
-                  )}
+                  {hasLinks && (
+                    <div className="mt-6 flex items-center gap-2 border-t border-[#E5E7E8] pt-5">
+                      {builder.links.linkedin && (
+                        <a
+                          href={builder.links.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${builder.name} LinkedIn`}
+                          className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#D7DEE2] bg-[#F7F7F5] text-[#344249] transition-colors hover:border-[#B8CDD4] hover:bg-[#EEF4F5] hover:text-[#467A8F]"
+                        >
+                          <LinkedInIcon className="h-4 w-4" />
+                        </a>
+                      )}
 
-                  {/* GitHub */}
-                  {builder.links.github ? (
-                    <a
-                      href={builder.links.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-[#F7F7F5] hover:bg-[#F2F7F8] text-[#171A1C] hover:text-[#345B6B] transition-colors border border-[#E5E7E8]"
-                      aria-label={`${builder.name} GitHub`}
-                    >
-                      <GitHubIcon className="w-4 h-4" />
-                    </a>
-                  ) : (
-                    <span
-                      className="p-2 rounded-lg bg-[#F7F7F5] text-slate-300 cursor-not-allowed border border-[#E5E7E8]"
-                      title="GitHub link coming soon"
-                    >
-                      <GitHubIcon className="w-4 h-4" />
-                    </span>
-                  )}
+                      {builder.links.github && (
+                        <a
+                          href={builder.links.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${builder.name} GitHub`}
+                          className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#D7DEE2] bg-[#F7F7F5] text-[#344249] transition-colors hover:border-[#B8CDD4] hover:bg-[#EEF4F5] hover:text-[#467A8F]"
+                        >
+                          <GitHubIcon className="h-4 w-4" />
+                        </a>
+                      )}
 
-                  {/* Portfolio */}
-                  {builder.links.portfolio ? (
-                    <a
-                      href={builder.links.portfolio}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-2 rounded-lg bg-[#F7F7F5] hover:bg-[#F2F7F8] text-[#171A1C] hover:text-[#345B6B] transition-colors border border-[#E5E7E8]"
-                      aria-label={`${builder.name} Portfolio`}
-                    >
-                      <GlobeIcon className="w-4 h-4" />
-                    </a>
-                  ) : (
-                    <span
-                      className="p-2 rounded-lg bg-[#F7F7F5] text-slate-300 cursor-not-allowed border border-[#E5E7E8]"
-                      title="Portfolio link coming soon"
-                    >
-                      <GlobeIcon className="w-4 h-4" />
-                    </span>
+                      {builder.links.portfolio && (
+                        <a
+                          href={builder.links.portfolio}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${builder.name} portfolio`}
+                          className="flex h-9 w-9 items-center justify-center rounded-xl border border-[#D7DEE2] bg-[#F7F7F5] text-[#344249] transition-colors hover:border-[#B8CDD4] hover:bg-[#EEF4F5] hover:text-[#467A8F]"
+                        >
+                          <GlobeIcon className="h-4 w-4" />
+                        </a>
+                      )}
+                    </div>
                   )}
                 </div>
-              </div>
-            </div>
-          ))}
+              </article>
+            );
+          })}
         </div>
       </div>
     </section>

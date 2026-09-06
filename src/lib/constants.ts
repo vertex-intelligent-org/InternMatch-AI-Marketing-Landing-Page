@@ -85,32 +85,31 @@ export const NAV_LINKS = [
   { label: "Product", href: "#product" },
   { label: "How It Works", href: "#how-it-works" },
   { label: "Demo", href: "#demo" },
-  { label: "About", href: "#about" },
-  { label: "Team", href: "#team" },
+    { label: "Team", href: "#team" },
 ];
 
 export const BUILDERS = [
   {
     name: "Mohamad Barakat",
     role: "Co-founder / Builder",
+    image: "/media/team/mohamad-barakat.png",
     areas: ["Backend", "AI Architecture", "Infrastructure", "Product"],
     links: {
       linkedin: EXTERNAL_LINKS.MOHAMAD_LINKEDIN_URL,
       github: EXTERNAL_LINKS.MOHAMAD_GITHUB_URL,
       portfolio: EXTERNAL_LINKS.MOHAMAD_PORTFOLIO_URL,
     },
-    image: null,
   },
   {
     name: "Selenur Yurdakul",
     role: "Co-founder / Builder",
+    image: "/media/team/selenur-yurdakul.jpg",
     areas: ["Mobile", "Frontend", "Product Experience"],
     links: {
       linkedin: EXTERNAL_LINKS.SELENUR_LINKEDIN_URL,
       github: EXTERNAL_LINKS.SELENUR_GITHUB_URL,
       portfolio: EXTERNAL_LINKS.SELENUR_PORTFOLIO_URL,
     },
-    image: null,
   },
 ];
 

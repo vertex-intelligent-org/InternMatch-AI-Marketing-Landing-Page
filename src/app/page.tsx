@@ -11,7 +11,6 @@ import { Demo } from "@/sections/Demo";
 import { Employer } from "@/sections/Employer";
 import { Validation } from "@/sections/Validation";
 import { Journey } from "@/sections/Journey";
-import { About } from "@/sections/About";
 import { Team } from "@/sections/Team";
 import { Resources } from "@/sections/Resources";
 import { FinalCTA } from "@/sections/FinalCTA";
@@ -54,16 +53,13 @@ export default function Home() {
         {/* 12: Product Journey (Shipaton to Türkiye Expansion, Launch Readiness Current) */}
         <Journey />
 
-        {/* 13: About (Origin & Problem Context) */}
-        <About />
-
-        {/* 14: Team (Founding Builders: Mohamad Barakat & Selenur Yurdakul) */}
+{/* 13: Team (Founding Builders: Mohamad Barakat & Selenur Yurdakul) */}
         <Team />
 
-        {/* 15: Resources (Centralized Link Cards) */}
+        {/* 14: Resources (Centralized Link Cards) */}
         <Resources />
 
-        {/* 16: Final CTA (Static Action & Contact) */}
+        {/* 15: Final CTA (Static Action & Contact) */}
         <FinalCTA />
 
         {/* 17: FAQ (Accessible Accordion) */}
