@@ -140,14 +140,25 @@ export function Problem() {
   // Check prefers-reduced-motion
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
+
+    const syncInitialMotionPreference = () => {
+      setPrefersReducedMotion(mediaQuery.matches);
+    };
 
     const handleMotionChange = (e: MediaQueryListEvent) => {
       setPrefersReducedMotion(e.matches);
     };
 
+    const initialMotionFrame = window.requestAnimationFrame(
+      syncInitialMotionPreference,
+    );
+
     mediaQuery.addEventListener("change", handleMotionChange);
-    return () => mediaQuery.removeEventListener("change", handleMotionChange);
+
+    return () => {
+      window.cancelAnimationFrame(initialMotionFrame);
+      mediaQuery.removeEventListener("change", handleMotionChange);
+    };
   }, []);
 
   // Responsive dimensions for precise card centering
@@ -160,9 +171,15 @@ export function Problem() {
       setCardWidth(cw);
     };
 
-    updateDimensions();
+    const initialDimensionsFrame =
+      window.requestAnimationFrame(updateDimensions);
+
     window.addEventListener("resize", updateDimensions);
-    return () => window.removeEventListener("resize", updateDimensions);
+
+    return () => {
+      window.cancelAnimationFrame(initialDimensionsFrame);
+      window.removeEventListener("resize", updateDimensions);
+    };
   }, []);
 
   // High-performance mobile scroll tracking:
@@ -502,7 +519,7 @@ export function Problem() {
         </div>
 
         {/* Large Brand Statement Banner in dark technical colors */}
-        <div className="relative rounded-3xl bg-[#171C1F] p-8 sm:p-12 md:p-16 text-center text-[#F5F6F4] overflow-hidden shadow-xl border border-[#20272B]">
+        <div className="relative rounded-3xl bg-[#171C1F] p-8 sm:p-12 md:p-16 text-center text-[#F5F6F4] overflow-hidden shadow-xl border border-[#20272B] mt-4 sm:mt-0">
           {/* Subtle restrained glow within dark banner */}
           <div
             className="absolute -right-20 -top-20 w-80 h-80 bg-[#467A8F]/10 rounded-full blur-3xl pointer-events-none"

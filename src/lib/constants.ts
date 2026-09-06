@@ -61,6 +61,9 @@ export const EXTERNAL_LINKS = {
   // Official GitHub marketing website repository URL
   GITHUB_URL: "https://github.com/vertex-intelligent/InternMatch-AI-Marketing-Landing-Page" as string | null,
 
+  // Support company website
+  VERTEX_URL: "https://vertexintelligent.com" as string,
+
   // Official AISS Club URL
   AISS_URL: null as string | null,
 
@@ -316,48 +319,6 @@ export const JOURNEY_MILESTONES = [
   },
 ];
 
-export const RESOURCES_LINKS = [
-  {
-    title: "Product Demo",
-    description: "Watch InternMatch AI in action.",
-    href: "#demo",
-    isExternal: false,
-    available: true,
-    actionLabel: "View Demo",
-  },
-  {
-    title: "GitHub",
-    description: "View the InternMatch AI marketing website source.",
-    href: EXTERNAL_LINKS.GITHUB_URL,
-    isExternal: true,
-    available: Boolean(EXTERNAL_LINKS.GITHUB_URL),
-    actionLabel: "Repository",
-  },
-  {
-    title: "AISS Club",
-    description: "Learn more about the student community connected to the project's original hackathon journey.",
-    href: EXTERNAL_LINKS.AISS_URL,
-    isExternal: true,
-    available: Boolean(EXTERNAL_LINKS.AISS_URL),
-    actionLabel: "Visit Community",
-  },
-  {
-    title: "Meet the Team",
-    description: "Learn about the people who built InternMatch AI.",
-    href: "#team",
-    isExternal: false,
-    available: true,
-    actionLabel: "Meet Builders",
-  },
-  {
-    title: "Future App Download",
-    description: "InternMatch AI is preparing for mobile store release.",
-    href: EXTERNAL_LINKS.APP_STORE_URL || EXTERNAL_LINKS.PLAY_STORE_URL,
-    isExternal: true,
-    available: Boolean(EXTERNAL_LINKS.APP_STORE_URL || EXTERNAL_LINKS.PLAY_STORE_URL),
-    actionLabel: "Store Release",
-  },
-];
 
 export const FAQS = [
   {
