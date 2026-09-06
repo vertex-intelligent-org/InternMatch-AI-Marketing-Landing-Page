@@ -1,109 +1,179 @@
 import React from "react";
-import { SparklesIcon } from "@/components/Icons";
+import { ArrowRightIcon, SparklesIcon } from "@/components/Icons";
+
+function FlowArrow() {
+  return (
+    <div
+      aria-hidden="true"
+      className="flex items-center justify-center py-1 md:px-2 md:py-0"
+    >
+      <ArrowRightIcon className="h-5 w-5 rotate-90 text-[#5F8997] md:rotate-0" />
+    </div>
+  );
+}
 
 export function AIMatching() {
   return (
-    <section className="py-24 sm:py-32 bg-[#171C1F] text-[#F5F6F4] relative overflow-hidden">
-      {/* Background glow lines with brand #467A8F tint */}
+    <section className="relative overflow-hidden bg-[#171C1F] py-20 text-[#F5F6F4] sm:py-28">
       <div
-        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-[#467A8F]/8 blur-[120px] pointer-events-none rounded-full"
         aria-hidden="true"
+        className="pointer-events-none absolute inset-0 opacity-[0.12]"
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(120,169,184,0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(120,169,184,0.08) 1px, transparent 1px)",
+          backgroundSize: "46px 46px",
+        }}
       />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-16 sm:mb-20">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute left-1/2 top-1/2 h-[360px] w-[680px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[#467A8F]/10 blur-[120px]"
+      />
+
+      <div className="relative z-10 mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* Heading */}
+        <div className="mx-auto mb-10 max-w-3xl text-center sm:mb-14">
           <span className="section-eyebrow section-eyebrow-dark mb-4">
-            <SparklesIcon className="w-3 h-3 text-[#78A9B8]" />
+            <SparklesIcon className="h-3 w-3 text-[#467A8F]" />
             Engineering Philosophy
           </span>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#F5F6F4] leading-[1.12]">
-            AI that supports the decision —
+
+          <h2 className="text-3xl font-extrabold leading-[1.12] tracking-tight text-[#F5F6F4] sm:text-4xl md:text-5xl">
+            AI supports the decision —
             <br />
             <span className="text-[#C7DDE3]">
-              not replaces it.
+              it doesn&apos;t make it.
             </span>
           </h2>
-          <p className="mt-5 text-base sm:text-lg text-[#A3C7D1] leading-relaxed font-normal max-w-2xl mx-auto">
-            InternMatch AI does not ask a language model to randomly decide whether a student is a good match.
-          </p>
-          <p className="mt-2 text-sm sm:text-base text-[#78A9B8] leading-relaxed font-normal max-w-2xl mx-auto">
-            Matching is calculated from structured skills, semantic similarity and candidate preferences. AI is then used to understand CVs, explain results and support applications.
+
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-[#91B5C0] sm:text-base">
+            Your match is calculated from real profile and internship signals.
+            AI explains the result and helps you prepare what comes next.
           </p>
         </div>
 
-        {/* Simplified Architectural Diagram Visual */}
-        <div className="max-w-4xl mx-auto p-6 sm:p-10 rounded-3xl bg-[#20272B] border border-[#2D4C59] shadow-2xl backdrop-blur-md">
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
-            {/* Input Triad */}
-            <div className="md:col-span-4 space-y-3">
-              <div className="p-3.5 rounded-xl bg-[#171C1F] border border-[#2D4C59]/80 text-left">
-                <div className="text-xs font-mono font-bold text-[#A3C7D1]">01</div>
-                <div className="text-sm font-semibold text-[#F5F6F4]">Structured Skills</div>
-                <div className="text-[11px] text-[#78A9B8]">Coursework, projects &amp; verified tools</div>
-              </div>
+        {/* Compact flow */}
+        <div className="mx-auto max-w-5xl rounded-[28px] border border-[#2D4C59] bg-[#1B2226]/95 p-4 shadow-[0_24px_70px_rgba(0,0,0,0.22)] sm:p-6">
+          <div className="grid grid-cols-1 items-stretch md:grid-cols-[1fr_auto_1fr_auto_1fr]">
+            {/* Profile */}
+            <div className="rounded-2xl border border-[#D7DEE2] bg-[#F2F4F5] p-5 shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <span className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#467A8F]">
+                  Your profile
+                </span>
 
-              <div className="p-3.5 rounded-xl bg-[#171C1F] border border-[#2D4C59]/80 text-left">
-                <div className="text-xs font-mono font-bold text-[#78A9B8]">02</div>
-                <div className="text-sm font-semibold text-[#F5F6F4]">Semantic Match</div>
-                <div className="text-[11px] text-[#78A9B8]">Contextual background embeddings</div>
-              </div>
-
-              <div className="p-3.5 rounded-xl bg-[#171C1F] border border-[#2D4C59]/80 text-left">
-                <div className="text-xs font-mono font-bold text-[#C7DDE3]">03</div>
-                <div className="text-sm font-semibold text-[#F5F6F4]">Preferences</div>
-                <div className="text-[11px] text-[#78A9B8]">Target role types &amp; work modalities</div>
-              </div>
-            </div>
-
-            {/* Junction & Calculation */}
-            <div className="md:col-span-4 flex flex-col items-center justify-center text-center p-4">
-              <div className="w-full flex items-center justify-center py-4">
-                <div className="h-14 w-14 rounded-2xl bg-gradient-to-br from-[#467A8F] to-[#345B6B] flex items-center justify-center text-white font-bold text-xl shadow-lg shadow-[#467A8F]/20 border border-[#78A9B8]/30">
-                  ∑
+                <div
+                  aria-hidden="true"
+                  className="grid h-8 w-8 grid-cols-2 gap-1"
+                >
+                  <span className="rounded-sm border border-[#467A8F]/70 bg-[#467A8F]/15" />
+                  <span className="rounded-sm border border-[#78A9B8]/40" />
+                  <span className="rounded-sm border border-[#78A9B8]/40" />
+                  <span className="rounded-sm border border-[#467A8F]/70 bg-[#467A8F]/15" />
                 </div>
               </div>
-              <div className="text-xs font-mono font-bold uppercase tracking-wider text-[#C7DDE3]">
-                Match Score Engine
-              </div>
-              <div className="text-[11px] text-[#78A9B8] mt-1">
-                Deterministic Compatibility
+
+              <h3 className="text-base font-bold text-[#202A2F]">
+                Structured signals
+              </h3>
+
+              <p className="mt-2 text-xs leading-relaxed text-[#5F6B73]">
+                Skills, experience, education, projects and preferences.
+              </p>
+
+              <div className="mt-4 flex flex-wrap gap-1.5">
+                {["Skills", "Experience", "Projects", "Preferences"].map(
+                  (item) => (
+                    <span
+                      key={item}
+                      className="rounded-md border border-[#D7DEE2] bg-white px-2 py-1 text-[9px] font-semibold text-[#2F3B42] shadow-sm"
+                    >
+                      {item}
+                    </span>
+                  ),
+                )}
               </div>
             </div>
 
-            {/* Grounded Explanation Output */}
-            <div className="md:col-span-4 space-y-3">
-              <div className="p-4 rounded-2xl bg-[#171C1F] border border-[#467A8F]/60 text-left">
-                <div className="flex items-center gap-2 mb-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#78A9B8] animate-pulse" />
-                  <span className="text-xs font-bold text-[#C7DDE3] uppercase tracking-wider">
-                    AI Explanation
+            <FlowArrow />
+
+            {/* Match */}
+            <div className="rounded-2xl border border-[#B8CDD4] bg-[#F2F4F5] p-5 shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <span className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#52666E]">
+                  Match engine
+                </span>
+
+                <span className="rounded-full border border-[#D7DEE2] bg-white px-2.5 py-1 text-[9px] font-bold text-[#2F3B42] shadow-sm">
+                  Calculated
+                </span>
+              </div>
+
+              <h3 className="text-base font-bold text-[#202A2F]">
+                Hybrid matching
+              </h3>
+
+              <p className="mt-2 text-xs leading-relaxed text-[#5F6B73]">
+                Combines skill alignment, semantic similarity and profile attributes.
+              </p>
+
+              <div className="mt-4 grid grid-cols-3 gap-2">
+                {["Skills", "Semantic", "Attributes"].map((item) => (
+                  <div
+                    key={item}
+                    className="rounded-lg border border-[#D7DEE2] bg-white px-2 py-2.5 text-center text-[9px] font-semibold text-[#2F3B42] shadow-sm"
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <FlowArrow />
+
+            {/* AI */}
+            <div className="rounded-2xl border border-[#D7DEE2] bg-[#F2F4F5] p-5 shadow-[0_10px_28px_rgba(0,0,0,0.08)]">
+              <div className="mb-4 flex items-center justify-between gap-3">
+                <span className="text-[10px] font-bold uppercase tracking-[0.17em] text-[#467A8F]">
+                  AI assistance
+                </span>
+
+                <SparklesIcon className="h-4 w-4 text-[#467A8F]" />
+              </div>
+
+              <h3 className="text-base font-bold text-[#202A2F]">
+                Explain &amp; prepare
+              </h3>
+
+              <p className="mt-2 text-xs leading-relaxed text-[#5F6B73]">
+                AI explains why you match and helps prepare application content using real context.
+              </p>
+
+              <div className="mt-4 space-y-2">
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#78A9B8]" />
+                  <span className="text-[10px] font-medium text-[#52666E]">
+                    Match explanation
                   </span>
                 </div>
-                <div className="text-xs text-[#F5F6F4] leading-relaxed">
-                  Transparent breakdown: exact skill alignments, flagged gaps, and tailored rationale.
-                </div>
-              </div>
 
-              <div className="p-3 rounded-xl bg-[#171C1F]/60 border border-[#2D4C59]/60 text-left text-xs text-[#78A9B8]">
-                <span className="text-[#F5F6F4] font-semibold">Application Support:</span> Role-specific application support grounded in candidate and internship context.
+                <div className="flex items-center gap-2">
+                  <span className="h-1.5 w-1.5 rounded-full bg-[#467A8F]" />
+                  <span className="text-[10px] font-medium text-[#52666E]">
+                    Application support
+                  </span>
+                </div>
               </div>
             </div>
           </div>
 
-          {/* Footer Label */}
-          <div className="mt-8 pt-6 border-t border-[#2D4C59] flex flex-col sm:flex-row items-center justify-between text-xs text-[#78A9B8] gap-3">
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#467A8F]" />
-              <span className="font-semibold text-[#F5F6F4]">Deterministic matching.</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#78A9B8]" />
-              <span className="font-semibold text-[#F5F6F4]">Grounded AI assistance.</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <span className="w-2 h-2 rounded-full bg-[#C7DDE3]" />
-              <span className="font-semibold text-[#F5F6F4]">Transparent match factors.</span>
-            </div>
+          {/* Single takeaway */}
+          <div className="mt-4 flex items-start gap-3 rounded-xl border border-[#D7DEE2] bg-[#F2F4F5] px-4 py-3.5 shadow-[0_8px_22px_rgba(0,0,0,0.07)] sm:items-center">
+            <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#78A9B8] sm:mt-0" />
+
+            <p className="text-xs font-semibold leading-relaxed text-[#3F4C53]">
+              AI does not generate your match score. It helps you understand it and act on it.
+            </p>
           </div>
         </div>
       </div>
