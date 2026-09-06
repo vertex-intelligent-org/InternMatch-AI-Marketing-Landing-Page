@@ -251,28 +251,28 @@ export const BENEFITS = [
 
 export const VALIDATION_METRICS = [
   {
-    value: "542",
+    value: "614",
     label: "Backend tests passed",
-    subtext: "Comprehensive automated test suite",
-    tag: "Verified metric",
+    subtext: "Full automated backend suite · 2 skipped",
+    tag: "39 test files",
   },
   {
-    value: "3",
-    label: "Languages supported",
-    subtext: "English · Türkçe · العربية",
-    tag: "Validated capability",
+    value: "Protected",
+    label: "AI quota lifecycle",
+    subtext: "Reservation, settlement, idempotency and stale recovery",
+    tag: "Backend enforced",
   },
   {
-    value: "Cross-platform",
+    value: "Tracked",
+    label: "AI usage telemetry",
+    subtext: "Tokens, estimated cost, latency, status and errors",
+    tag: "Operational visibility",
+  },
+  {
+    value: "iOS + Android",
     label: "Mobile architecture",
-    subtext: "Built for iOS and Android devices",
-    tag: "Validated capability",
-  },
-  {
-    value: "Hybrid",
-    label: "Matching approach",
-    subtext: "Structured skills + semantic vector search",
-    tag: "Validated capability",
+    subtext: "Cross-platform React Native / Expo application",
+    tag: "Cross-platform",
   },
 ];
 
