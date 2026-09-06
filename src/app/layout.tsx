@@ -43,10 +43,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/branding/internmatch-icon.png",
-        width: 500,
-        height: 500,
-        alt: "InternMatch AI Icon",
+        url: "/media/social/internmatch-social-preview.png",
+        width: 1200,
+        height: 798,
+        alt: "InternMatch AI — AI-powered internship matching for university students",
       },
     ],
   },
@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     title: "InternMatch AI — Stop Searching. Start Matching.",
     description:
       "AI-powered internship matching and application support for university students.",
-    images: ["/branding/internmatch-icon.png"],
+    images: ["/media/social/internmatch-social-preview.png"],
   },
   icons: {
     icon: "/branding/internmatch-icon.png",
