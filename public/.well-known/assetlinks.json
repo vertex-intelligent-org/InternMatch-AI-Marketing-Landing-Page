@@ -1,0 +1,16 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.aissclub.internmatchai",
+      "sha256_cert_fingerprints": [
+        "76:7B:B1:AE:6F:DB:99:CD:6E:E5:11:85:D5:2F:DD:C0:9C:0D:28:43:3E:58:A7:FB:B9:9E:CF:6B:78:79:A9:A7",
+        "BB:CA:23:91:E9:D2:95:4C:5A:7D:0E:A1:68:41:4D:CE:C3:C1:DF:22:B7:08:39:D3:B0:3E:1A:FA:7B:A5:DD:8E",
+        "27:4C:45:FC:AB:F3:0C:BF:A7:61:03:5D:46:9A:E3:EB:4F:A1:C2:49:CC:7F:8F:E1:A8:B2:59:7F:21:B5:2F:07"
+      ]
+    }
+  }
+]
