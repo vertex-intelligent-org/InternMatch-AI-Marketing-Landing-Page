@@ -1,16 +1,15 @@
-import React from "react";
 import Link from "next/link";
 import type { Metadata } from "next";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 import { ArrowRightIcon } from "@/components/Icons";
 
-const DELETION_EMAIL = "internmatch@vertexintelligent.com";
+const CONTACT_EMAIL = "internmatch@vertexintelligent.com";
 
 export const metadata: Metadata = {
-  title: "Request Account Deletion | InternMatch AI",
+  title: "Account & Data Deletion | InternMatch AI",
   description:
-    "Request deletion of your InternMatch AI account and associated user data.",
+    "Learn how to delete your InternMatch AI account and associated product data.",
 };
 
 export default function DataDeletionPage() {
@@ -31,11 +30,10 @@ export default function DataDeletionPage() {
 
         <header className="mb-8">
           <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#171A1C] tracking-tight">
-            Request Account Deletion
+            Account &amp; Data Deletion
           </h1>
-
           <p className="text-base sm:text-lg font-medium text-[#656B70] mt-2">
-            Data &amp; Account Deletion
+            Account Control &amp; Deletion
           </p>
         </header>
 
@@ -43,72 +41,35 @@ export default function DataDeletionPage() {
           <span className="inline-block px-2.5 py-1 rounded-md text-[11px] font-bold tracking-wider uppercase bg-[#F2F7F8] text-[#2D4C59] border border-[#C7DDE3] mb-3">
             ACCOUNT DELETION
           </span>
-
-          <p className="text-sm sm:text-base text-[#171A1C] leading-relaxed font-normal">
-            You can use this page to request deletion of your InternMatch AI
-            account and associated user data, including if you no longer have
-            access to the mobile app.
+          <p className="text-sm sm:text-base text-[#171A1C] leading-relaxed">
+            InternMatch AI allows users to request deletion of their account
+            and associated product data.
           </p>
         </div>
 
         <article className="rounded-2xl sm:rounded-3xl bg-white border border-[#E5E7E8] p-6 sm:p-10 shadow-xs">
           <div className="space-y-8 sm:space-y-10">
-            <section aria-labelledby="section-how-to-request">
+            <section aria-labelledby="section-in-app">
               <h2
-                id="section-how-to-request"
+                id="section-in-app"
                 className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
               >
-                1. How to request deletion
+                1. Delete Your Account in the App
               </h2>
-
-              <div className="text-sm sm:text-base text-[#4B5257] leading-relaxed space-y-4">
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
                 <p>
-                  Send an email from the email address associated with your
-                  InternMatch AI account to:
+                  The recommended method is the self-service deletion option
+                  available while signed in:
                 </p>
-
-                <a
-                  href={`mailto:${DELETION_EMAIL}?subject=InternMatch%20AI%20Account%20Deletion%20Request`}
-                  className="block p-3.5 sm:p-4 rounded-xl bg-[#F2F7F8] border border-[#C7DDE3] text-[#2D4C59] font-mono font-semibold text-sm sm:text-base break-all hover:border-[#8DB2BD] transition-colors"
-                >
-                  {DELETION_EMAIL}
-                </a>
-
-                <p>Use the subject:</p>
-
-                <div className="p-3 sm:p-3.5 rounded-xl bg-[#F7F7F5] border border-[#E5E7E8] text-[#171A1C] font-mono text-xs sm:text-sm select-all">
-                  InternMatch AI — Account Deletion Request
-                </div>
-
-                <p>Include the following information:</p>
-
-                <ul className="list-disc list-inside space-y-1.5 text-[#4B5257] pl-1">
-                  <li>Your full name</li>
-                  <li>
-                    The email address associated with your InternMatch AI
-                    account
-                  </li>
-                  <li>
-                    A clear statement that you want your InternMatch AI account
-                    deleted
-                  </li>
-                </ul>
+                <p className="font-semibold text-[#171A1C]">
+                  InternMatch AI → Settings → Delete Account
+                </p>
+                <p>
+                  You will be asked to confirm the deletion before the request
+                  is completed. This option is available from account settings
+                  and is intended for authenticated account owners.
+                </p>
               </div>
-            </section>
-
-            <section aria-labelledby="section-verification">
-              <h2
-                id="section-verification"
-                className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
-              >
-                2. Verification
-              </h2>
-
-              <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
-                We may contact you to verify ownership of the account before
-                processing the deletion request. This helps prevent
-                unauthorized deletion requests.
-              </p>
             </section>
 
             <section aria-labelledby="section-what-is-deleted">
@@ -116,76 +77,210 @@ export default function DataDeletionPage() {
                 id="section-what-is-deleted"
                 className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
               >
-                3. What happens after verification
+                2. What Is Deleted
               </h2>
-
-              <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
-                After account ownership is verified, we will delete the
-                InternMatch AI account and associated user data under our
-                control, including profile information, uploaded CVs,
-                application-related data, and related product records. Limited
-                information may be retained where necessary for legitimate
-                security, fraud-prevention, dispute-resolution, regulatory, or
-                legal purposes.
-              </p>
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                <p>
+                  When account deletion completes, InternMatch AI is designed
+                  to remove applicable account and product information
+                  associated with the authenticated user, including:
+                </p>
+                <ul className="list-disc space-y-1.5 pl-5">
+                  <li>Candidate profile information.</li>
+                  <li>
+                    Candidate skills, education, experience, and related
+                    profile data.
+                  </li>
+                  <li>Private CV or resume files.</li>
+                  <li>Private avatar or profile-image files.</li>
+                  <li>
+                    Saved internships and associated candidate-owned profile
+                    relationships where applicable.
+                  </li>
+                  <li>
+                    AI quota and internal user-specific processing state where
+                    applicable.
+                  </li>
+                  <li>
+                    InternMatch AI subscription entitlement state associated
+                    with the deleted account.
+                  </li>
+                </ul>
+                <p>
+                  The deletion request is based on the identity of the
+                  authenticated account. A user cannot request deletion of
+                  another user&apos;s account by supplying a different user ID.
+                </p>
+              </div>
             </section>
 
-            <section aria-labelledby="section-provider-records">
+            <section aria-labelledby="section-employers">
               <h2
-                id="section-provider-records"
+                id="section-employers"
                 className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
               >
-                4. Service-provider and transaction records
+                3. Employer Accounts
               </h2>
-
-              <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
-                Some service providers, app stores, or payment platforms may
-                retain limited records where required by their own legal or
-                operational obligations. When subscription features are
-                enabled, this may include subscription or transaction records
-                processed by RevenueCat or the applicable app store. Retention
-                of such records does not keep your InternMatch AI account
-                active.
-              </p>
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                <p>
+                  For an employer account, internship or opportunity records
+                  that need to remain to preserve historical application
+                  integrity may not necessarily be physically removed.
+                </p>
+                <p>
+                  Such records may be detached from the deleted employer
+                  account, deactivated, or retained without the deleted
+                  employer account identity where necessary to preserve
+                  application history.
+                </p>
+                <p>
+                  They must not continue functioning as active opportunities
+                  owned by the deleted account.
+                </p>
+              </div>
             </section>
 
-            <section aria-labelledby="section-external-access">
+            <section aria-labelledby="section-auth-storage">
               <h2
-                id="section-external-access"
+                id="section-auth-storage"
                 className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
               >
-                5. Accessing this deletion resource
+                4. Authentication and Private Storage
               </h2>
-
-              <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
-                You do not need to reinstall the app to submit a deletion
-                request. This page is available as an external account deletion
-                resource so that you can request deletion even if you no longer
-                have access to the app.
-              </p>
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                <p>
+                  Account deletion includes removal of the applicable
+                  InternMatch AI authentication identity through our
+                  authentication provider and deletion of applicable privately
+                  stored CV/avatar files.
+                </p>
+                <p>
+                  If a required deletion step cannot safely be completed, the
+                  deletion operation may return an error rather than silently
+                  reporting success.
+                </p>
+                <p>
+                  InternMatch AI also maintains protections intended to prevent
+                  a deleted account from being recreated unintentionally by
+                  delayed subscription-provider events.
+                </p>
+              </div>
             </section>
 
-            <section aria-labelledby="section-privacy-policy">
+            <section aria-labelledby="section-retained">
               <h2
-                id="section-privacy-policy"
+                id="section-retained"
                 className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
               >
-                6. More information
+                5. Information That May Be Retained
               </h2>
-
-              <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
-                For more information about data processing, AI providers,
-                service providers, retention, and privacy rights, review the
-                InternMatch AI Privacy Policy.
-              </p>
-
-              <Link
-                href="/privacy"
-                className="inline-flex mt-3 text-sm font-semibold text-[#345B6B] hover:text-[#2D4C59] transition-colors"
-              >
-                Read the Privacy Policy
-              </Link>
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                <p>
+                  Some limited information may be retained where reasonably
+                  necessary for:
+                </p>
+                <ul className="list-disc space-y-1.5 pl-5">
+                  <li>Security.</li>
+                  <li>Fraud and abuse prevention.</li>
+                  <li>Technical integrity.</li>
+                  <li>Deletion enforcement.</li>
+                  <li>Subscription or transaction disputes.</li>
+                  <li>Legal or regulatory obligations.</li>
+                  <li>Resolving disputes or protecting the service.</li>
+                </ul>
+                <p>
+                  A minimal technical record may be retained to recognize that
+                  an account was deleted and prevent external provider events
+                  from recreating the account&apos;s subscription state.
+                </p>
+                <p>
+                  Third-party providers may also retain records independently
+                  according to their own legal requirements and privacy
+                  policies.
+                </p>
+              </div>
             </section>
+
+            <section aria-labelledby="section-subscriptions">
+              <h2
+                id="section-subscriptions"
+                className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
+              >
+                6. App Store and Google Play Subscriptions
+              </h2>
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                <p className="font-semibold text-[#171A1C]">
+                  Deleting your InternMatch AI account does not automatically
+                  cancel an Apple App Store or Google Play subscription.
+                </p>
+                <p>
+                  If you have an active subscription, cancel it separately
+                  through the store where you purchased it.
+                </p>
+                <p>
+                  Deleting your InternMatch AI account removes access to the
+                  account but does not control subscription billing managed
+                  independently by Apple or Google.
+                </p>
+              </div>
+            </section>
+
+            <section aria-labelledby="section-no-access">
+              <h2
+                id="section-no-access"
+                className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
+              >
+                7. If You Cannot Access the App
+              </h2>
+              <div className="space-y-3 text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                <p>
+                  If you cannot access the in-app deletion option, contact:
+                </p>
+                <a
+                  href={`mailto:${CONTACT_EMAIL}?subject=InternMatch%20AI%20Account%20Deletion%20Request`}
+                  className="inline-flex font-mono font-semibold text-[#345B6B] hover:text-[#2D4C59] transition-colors"
+                >
+                  {CONTACT_EMAIL}
+                </a>
+                <p>
+                  Include enough information for us to identify the account you
+                  are requesting to delete.
+                </p>
+                <p>
+                  Do not send passwords, authentication tokens, API keys, or
+                  other account secrets by email.
+                </p>
+                <p>
+                  We may need to verify that the request is being made by the
+                  legitimate account owner before processing it.
+                </p>
+              </div>
+            </section>
+
+            <section aria-labelledby="section-questions">
+              <h2
+                id="section-questions"
+                className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
+              >
+                8. Questions
+              </h2>
+              <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
+                For questions about account deletion or personal information:
+              </p>
+              <a
+                href={`mailto:${CONTACT_EMAIL}`}
+                className="inline-flex mt-3 font-mono text-sm sm:text-base font-semibold text-[#345B6B] hover:text-[#2D4C59] transition-colors"
+              >
+                {CONTACT_EMAIL}
+              </a>
+            </section>
+
+            <Link
+              href="/privacy"
+              className="inline-flex text-sm font-semibold text-[#345B6B] hover:text-[#2D4C59] transition-colors"
+            >
+              Read the Privacy Policy
+            </Link>
           </div>
 
           <hr className="my-8 sm:my-10 border-[#E5E7E8]" />
