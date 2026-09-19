@@ -139,7 +139,7 @@ const SECTIONS = [
     title: "11. Suspension or Termination",
     paragraphs: [
       "Access to InternMatch AI may be limited, suspended, or terminated where reasonably necessary because of abuse, fraud, security risk, unauthorized access, material violation of these Terms, harm to other users or the service, or operational or legal requirements.",
-      "Users may also stop using the service and may delete their account through supported account-deletion functionality.",
+      "Users may also stop using the service and may delete their account through supported account-deletion functionality, including Settings → Delete Account for authenticated users.",
     ],
   },
   {
@@ -160,8 +160,25 @@ const SECTIONS = [
     ],
   },
   {
+    id: "verification-compliance",
+    title: "14. Employer Verification, Moderation, and Compliance",
+    paragraphs: [
+      "Employer organizations, internship listings, verification submissions, and compliance evidence may be subject to administrative review, moderation, approval, rejection, or requests for changes where necessary to protect users and platform integrity.",
+      "Employers remain responsible for the accuracy, authority, legality, and appropriate use of the information and documents they submit.",
+    ],
+  },
+  {
+    id: "notifications-promotions",
+    title: "15. Notifications and Promotional Access",
+    paragraphs: [
+      "InternMatch AI may provide in-app, push, or transactional email notifications related to accounts, applications, internship listings, verification, compliance, subscriptions, or other service activity.",
+      "Where promotional access is offered, eligibility, duration, redemption limits, and associated entitlements may be subject to campaign-specific rules and one-time redemption controls.",
+      "Users may manage applicable device notification permissions through their device settings.",
+    ],
+  },
+  {
     id: "changes",
-    title: "14. Changes to the Service or Terms",
+    title: "16. Changes to the Service or Terms",
     paragraphs: [
       'InternMatch AI may update features or these Terms as the service evolves. Material updates will be reflected by changing the "Last updated" date or otherwise providing appropriate notice where necessary.',
     ],
@@ -251,7 +268,7 @@ export default function TermsPage() {
                 id="section-contact"
                 className="text-lg sm:text-xl font-bold text-[#171A1C] tracking-tight mb-3"
               >
-                15. Contact
+                17. Contact
               </h2>
               <p className="text-sm sm:text-base text-[#4B5257] leading-relaxed">
                 Questions about these Terms or InternMatch AI can be sent to:
@@ -268,7 +285,7 @@ export default function TermsPage() {
           <hr className="my-8 sm:my-10 border-[#E5E7E8]" />
 
           <p className="text-xs font-mono text-[#656B70]">
-            Last updated: September 2026 | InternMatch AI
+            Last updated: September 19, 2026 | InternMatch AI
           </p>
         </article>
       </main>
