@@ -2,41 +2,31 @@ import React from "react";
 import Image from "next/image";
 import { CheckIcon, SparklesIcon } from "@/components/Icons";
 
-type PhoneShowcaseProps = {
+const SHOWCASE_EYEBROW_CLASS =
+  "text-xs font-bold uppercase tracking-[0.14em] text-[#345B6B]";
+
+const SHOWCASE_TITLE_CLASS =
+  "mt-2 mb-3 text-3xl font-extrabold leading-[1.08] tracking-tight text-[#171A1C] sm:text-4xl lg:text-[42px]";
+
+type ProductImageProps = {
   src: string;
   alt: string;
-  imageClassName?: string;
 };
 
-function PhoneShowcase({
+function ProductImage({
   src,
   alt,
-  imageClassName = "",
-}: PhoneShowcaseProps) {
+}: ProductImageProps) {
   return (
-    <div className="aurora-card-surface relative overflow-hidden rounded-[32px] border border-[#DCE5E7] bg-[#F7F7F5] p-4 sm:p-7 lg:p-8 shadow-sm">
-      <div className="relative z-10 flex min-h-[470px] sm:min-h-[590px] items-center justify-center">
-        <div className="relative w-full max-w-[292px] sm:max-w-[318px]">
-          <div className="rounded-[42px] bg-[#171A1C] p-[7px] shadow-[0_24px_60px_rgba(23,26,28,0.16)] ring-1 ring-black/10">
-            <div
-              className="relative overflow-hidden rounded-[35px] bg-white"
-              style={{ aspectRatio: "9 / 19.5" }}
-            >
-              <Image
-                src={src}
-                alt={alt}
-                fill
-                sizes="(max-width: 640px) 78vw, 318px"
-                className={`object-cover object-top ${imageClassName}`}
-              />
-
-              <div
-                aria-hidden="true"
-                className="pointer-events-none absolute left-1/2 top-2.5 z-20 h-[22px] w-[78px] -translate-x-1/2 rounded-full bg-[#171A1C]"
-              />
-            </div>
-          </div>
-        </div>
+    <div className="aurora-card-surface relative mx-auto w-full max-w-[500px] overflow-hidden rounded-[32px] border border-[#DCE5E7] bg-[#F7F7F5] p-3 shadow-sm sm:p-4 lg:p-5">
+      <div className="relative z-10 aspect-[10/17] w-full">
+        <Image
+          src={src}
+          alt={alt}
+          fill
+          sizes="(max-width: 640px) calc(100vw - 56px), (max-width: 1024px) 460px, 500px"
+          className="object-contain"
+        />
       </div>
     </div>
   );
@@ -54,12 +44,12 @@ export function ProductShowcase() {
             PRODUCT INTRO — REAL ACCOUNT ACCESS SCREEN
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 md:mb-32">
-          <div className="lg:col-span-5">
-            <span className="section-eyebrow mb-4">
+          <div className="lg:col-span-5 lg:order-2">
+            <span className={`${SHOWCASE_EYEBROW_CLASS} mb-4`}>
               Product Capabilities
             </span>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-[#171A1C] leading-[1.12]">
+            <h2 className={SHOWCASE_TITLE_CLASS}>
               Engineered for high signal.
               <br />
               Built for candidate clarity.
@@ -70,11 +60,10 @@ export function ProductShowcase() {
             </p>
           </div>
 
-          <div className="lg:col-span-7">
-            <PhoneShowcase
+          <div className="lg:col-span-7 lg:order-1">
+            <ProductImage
               src="/media/product-showcase/account-access.png"
               alt="InternMatch AI account access screen"
-              imageClassName="origin-top scale-[1.06] -translate-y-[24px]"
             />
           </div>
         </div>
@@ -84,11 +73,11 @@ export function ProductShowcase() {
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 md:mb-32">
           <div className="lg:col-span-5 lg:order-1">
-            <span className="text-xs font-bold tracking-widest text-[#345B6B] uppercase">
+            <span className={SHOWCASE_EYEBROW_CLASS}>
               CV ANALYSIS
             </span>
 
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-[#171A1C] mt-2 mb-3 tracking-tight">
+            <h3 className={SHOWCASE_TITLE_CLASS}>
               Your CV becomes your profile.
             </h3>
 
@@ -134,7 +123,7 @@ export function ProductShowcase() {
           </div>
 
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-2">
-            <PhoneShowcase
+            <ProductImage
               src="/media/product-showcase/cv-analysis.png"
               alt="InternMatch AI CV analysis and structured profile screen"
             />
@@ -146,11 +135,11 @@ export function ProductShowcase() {
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 md:mb-32">
           <div className="lg:col-span-5 lg:order-2">
-            <span className="text-xs font-bold tracking-widest text-[#345B6B] uppercase">
+            <span className={SHOWCASE_EYEBROW_CLASS}>
               MATCHUPS
             </span>
 
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-[#171A1C] mt-2 mb-3 tracking-tight">
+            <h3 className={SHOWCASE_TITLE_CLASS}>
               Know where you actually fit.
             </h3>
 
@@ -170,7 +159,7 @@ export function ProductShowcase() {
           </div>
 
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-1">
-            <PhoneShowcase
+            <ProductImage
               src="/media/product-showcase/matchups.png"
               alt="InternMatch AI internship matchups screen"
             />
@@ -182,11 +171,11 @@ export function ProductShowcase() {
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 md:mb-32">
           <div className="lg:col-span-5 lg:order-1">
-            <span className="text-xs font-bold tracking-widest text-[#345B6B] uppercase">
+            <span className={SHOWCASE_EYEBROW_CLASS}>
               WHY YOU MATCH
             </span>
 
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-[#171A1C] mt-2 mb-3 tracking-tight">
+            <h3 className={SHOWCASE_TITLE_CLASS}>
               A percentage isn&apos;t enough.
             </h3>
 
@@ -228,7 +217,7 @@ export function ProductShowcase() {
           </div>
 
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-2">
-            <PhoneShowcase
+            <ProductImage
               src="/media/product-showcase/why-you-match.png"
               alt="InternMatch AI Why You Match explanation screen"
             />
@@ -240,11 +229,11 @@ export function ProductShowcase() {
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center mb-24 md:mb-32">
           <div className="lg:col-span-5 lg:order-2">
-            <span className="text-xs font-bold tracking-widest text-[#345B6B] uppercase">
+            <span className={SHOWCASE_EYEBROW_CLASS}>
               APPLICATION SUPPORT
             </span>
 
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-[#171A1C] mt-2 mb-3 tracking-tight">
+            <h3 className={SHOWCASE_TITLE_CLASS}>
               Go from match to application faster.
             </h3>
 
@@ -258,7 +247,7 @@ export function ProductShowcase() {
           </div>
 
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-1">
-            <PhoneShowcase
+            <ProductImage
               src="/media/product-showcase/application-support.png"
               alt="InternMatch AI application support screen"
             />
@@ -270,11 +259,11 @@ export function ProductShowcase() {
             ======================================================== */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-center">
           <div className="lg:col-span-5 lg:order-1">
-            <span className="text-xs font-bold tracking-widest text-[#345B6B] uppercase">
+            <span className={SHOWCASE_EYEBROW_CLASS}>
               APPLICATION TRACKING
             </span>
 
-            <h3 className="text-3xl sm:text-4xl font-extrabold text-[#171A1C] mt-2 mb-3 tracking-tight">
+            <h3 className={SHOWCASE_TITLE_CLASS}>
               Keep every application in one place.
             </h3>
 
@@ -314,7 +303,7 @@ export function ProductShowcase() {
           </div>
 
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-2">
-            <PhoneShowcase
+            <ProductImage
               src="/media/product-showcase/application-tracking.png"
               alt="InternMatch AI application tracking screen"
             />
