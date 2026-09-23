@@ -137,6 +137,22 @@ export function Problem() {
 
   const cardGap = 16;
 
+  /*
+   * Keep the mobile pinned-card interaction concise.
+   *
+   * The previous runway used viewport height + 360px, which made
+   * the effective pinned scroll distance vary significantly across
+   * phones and could feel like an empty section after the cards.
+   *
+   * The runway is now synchronized to:
+   *
+   *   sticky panel height + 420px interaction distance
+   *
+   * so every mobile device gets a predictable, short scrub.
+   */
+  const mobileStickyTop = 96;
+  const mobileScrollDistance = 420;
+
   // Check prefers-reduced-motion
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -182,6 +198,78 @@ export function Problem() {
     };
   }, []);
 
+  /*
+   * Keep the actual sticky runway independent of viewport height.
+   *
+   * This removes the long mobile dead zone while preserving the
+   * three-card horizontal scroll interaction.
+   */
+  useEffect(() => {
+    if (
+      prefersReducedMotion ||
+      viewportWidth >= 768
+    ) {
+      return;
+    }
+
+    const runway =
+      runwayRef.current;
+
+    const sticky =
+      stickyRef.current;
+
+    if (!runway || !sticky) {
+      return;
+    }
+
+    let rafId: number | null = null;
+
+    const syncRunwayHeight = () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(
+          rafId
+        );
+      }
+
+      rafId = window.requestAnimationFrame(
+        () => {
+          rafId = null;
+
+          const stickyHeight =
+            sticky.offsetHeight;
+
+          runway.style.height =
+            `${stickyHeight + mobileScrollDistance}px`;
+        }
+      );
+    };
+
+    const resizeObserver =
+      new ResizeObserver(
+        syncRunwayHeight
+      );
+
+    resizeObserver.observe(
+      sticky
+    );
+
+    syncRunwayHeight();
+
+    return () => {
+      resizeObserver.disconnect();
+
+      if (rafId !== null) {
+        window.cancelAnimationFrame(
+          rafId
+        );
+      }
+    };
+  }, [
+    prefersReducedMotion,
+    viewportWidth,
+    mobileScrollDistance,
+  ]);
+
   // High-performance mobile scroll tracking:
   // direct GPU transform every frame, React state only when active card changes.
   useEffect(() => {
@@ -195,7 +283,7 @@ export function Problem() {
       if (!runwayRef.current || !trackRef.current) return;
 
       const rect = runwayRef.current.getBoundingClientRect();
-      const stickyTop = 96;
+      const stickyTop = mobileStickyTop;
 
       const stickyHeight =
         stickyRef.current?.offsetHeight ??
@@ -303,7 +391,7 @@ export function Problem() {
     if (!runwayRef.current) return;
     const rect = runwayRef.current.getBoundingClientRect();
     const currentScrollY = window.scrollY;
-    const stickyTop = 96;
+    const stickyTop = mobileStickyTop;
       const stickyHeight =
         stickyRef.current?.offsetHeight ??
         Math.min(window.innerHeight - stickyTop, 560);
@@ -429,7 +517,7 @@ export function Problem() {
             <div
               ref={runwayRef}
               className="relative -mx-4 px-4"
-              style={{ height: "calc(100dvh + 360px)" }}
+              style={{ height: "calc(100dvh + 180px)" }}
             >
               {/* Sticky Panel: Stays completely pinned at top-[58px], filling the viewport below navbar */}
               <div ref={stickyRef} className="sticky top-[96px] h-fit overflow-hidden py-2">

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import { SparklesIcon } from "./Icons";
 
 const FULL_TEXT = "AI-powered internship matching for university students";
@@ -12,32 +12,46 @@ interface HeroCapsuleProps {
   className?: string;
 }
 
+function subscribeToReducedMotion(
+  onStoreChange: () => void
+) {
+  const mediaQuery = window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  );
+
+  mediaQuery.addEventListener(
+    "change",
+    onStoreChange
+  );
+
+  return () => {
+    mediaQuery.removeEventListener(
+      "change",
+      onStoreChange
+    );
+  };
+}
+
+function getReducedMotionSnapshot() {
+  return window.matchMedia(
+    "(prefers-reduced-motion: reduce)"
+  ).matches;
+}
+
+function getReducedMotionServerSnapshot() {
+  return false;
+}
+
 export function HeroCapsule({ className = "" }: HeroCapsuleProps) {
   const [displayedCount, setDisplayedCount] = useState(0);
   const [phase, setPhase] = useState<"typing" | "paused" | "fading">("typing");
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
 
-  // Detect user's reduced-motion preference
-  useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    if (mediaQuery.matches) {
-      setPrefersReducedMotion(true);
-      setDisplayedCount(FULL_TEXT.length);
-      setPhase("paused");
-      return;
-    }
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-      if (e.matches) {
-        setDisplayedCount(FULL_TEXT.length);
-        setPhase("paused");
-      }
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
-  }, []);
+  const prefersReducedMotion =
+    useSyncExternalStore(
+      subscribeToReducedMotion,
+      getReducedMotionSnapshot,
+      getReducedMotionServerSnapshot
+    );
 
   // Looping typewriter lifecycle
   useEffect(() => {
@@ -51,8 +65,10 @@ export function HeroCapsule({ className = "" }: HeroCapsuleProps) {
           setDisplayedCount((prev) => prev + 1);
         }, TYPING_SPEED_MS);
       } else {
-        // Finished typing entire sentence; pause for ~2 seconds
-        setPhase("paused");
+        // Finished typing entire sentence; transition on the timer queue.
+        timeoutId = setTimeout(() => {
+          setPhase("paused");
+        }, 0);
       }
     } else if (phase === "paused") {
       timeoutId = setTimeout(() => {
@@ -68,8 +84,24 @@ export function HeroCapsule({ className = "" }: HeroCapsuleProps) {
     return () => clearTimeout(timeoutId);
   }, [displayedCount, phase, prefersReducedMotion]);
 
-  const visibleText = FULL_TEXT.slice(0, displayedCount);
-  const ghostText = FULL_TEXT.slice(displayedCount);
+  const renderedCount =
+    prefersReducedMotion
+      ? FULL_TEXT.length
+      : displayedCount;
+
+  const renderedPhase =
+    prefersReducedMotion
+      ? "paused"
+      : phase;
+
+  const visibleText = FULL_TEXT.slice(
+    0,
+    renderedCount
+  );
+
+  const ghostText = FULL_TEXT.slice(
+    renderedCount
+  );
 
   return (
     <div
@@ -109,7 +141,7 @@ export function HeroCapsule({ className = "" }: HeroCapsuleProps) {
       {/* Single-line typewriter text container: in-flow ghost reserves full width on ONE line with ZERO layout shift */}
       <span
         className={`hero-capsule-text inline-block font-semibold leading-none transition-opacity duration-200 ${
-          phase === "fading" ? "opacity-0" : "opacity-100"
+          renderedPhase === "fading" ? "opacity-0" : "opacity-100"
         }`}
         aria-hidden="true"
       >
@@ -117,7 +149,7 @@ export function HeroCapsule({ className = "" }: HeroCapsuleProps) {
         <span>{visibleText}</span>
 
         {/* Streaming AI typing cursor */}
-        {phase === "typing" && !prefersReducedMotion && (
+        {renderedPhase === "typing" && !prefersReducedMotion && (
           <span
             className="inline-block w-[1.5px] h-[0.9em] -mr-[1.5px] bg-[#467A8F] ml-0.5 align-middle animate-pulse shrink-0"
             aria-hidden="true"

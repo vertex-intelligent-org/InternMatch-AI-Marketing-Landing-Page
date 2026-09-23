@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useSyncExternalStore } from "react";
+import Link from "next/link";
 
 type AuthLinkMode =
   | "confirmation"
@@ -82,26 +83,62 @@ function callbackIsValid(): boolean {
   );
 }
 
+function subscribeToLocation(
+  onStoreChange: () => void
+) {
+  window.addEventListener(
+    "popstate",
+    onStoreChange
+  );
+
+  window.addEventListener(
+    "hashchange",
+    onStoreChange
+  );
+
+  return () => {
+    window.removeEventListener(
+      "popstate",
+      onStoreChange
+    );
+
+    window.removeEventListener(
+      "hashchange",
+      onStoreChange
+    );
+  };
+}
+
+function getLocationStatus(): LinkStatus {
+  return callbackIsValid()
+    ? "success"
+    : "error";
+}
+
+function getServerLocationStatus(): LinkStatus {
+  return "checking";
+}
+
 export default function AuthLinkStatus({
   mode,
 }: AuthLinkStatusProps) {
-  const [status, setStatus] =
-    useState<LinkStatus>("checking");
+  const status = useSyncExternalStore(
+    subscribeToLocation,
+    getLocationStatus,
+    getServerLocationStatus
+  );
 
   const content = CONTENT[mode];
-
-  useEffect(() => {
-    setStatus(
-      callbackIsValid()
-        ? "success"
-        : "error"
-    );
-  }, []);
 
   const openApp = () => {
     const suffix =
       `${window.location.search}${window.location.hash}`;
 
+    /*
+     * This is an external custom app URL scheme,
+     * not an internal Next.js route.
+     */
+    // eslint-disable-next-line @next/next/no-location-assign-relative-destination
     window.location.assign(
       `${content.deepLink}${suffix}`
     );
@@ -174,12 +211,12 @@ export default function AuthLinkStatus({
           </button>
         ) : null}
 
-        <a
+        <Link
           href="/"
           className="mt-5 inline-flex text-[13px] font-medium text-[#527580] underline-offset-4 hover:underline"
         >
           Back to internmatch.college
-        </a>
+        </Link>
 
         <p className="mt-7 text-[12px] leading-5 text-[#88959B]">
           Authentication credentials are handled by the secure callback and are not displayed on this page.

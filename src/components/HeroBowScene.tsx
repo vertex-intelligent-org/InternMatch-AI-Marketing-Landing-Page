@@ -268,6 +268,16 @@ export function HeroBowScene({
       return;
     }
 
+    /*
+     * Capture the two stable Map instances for cleanup.
+     * Their ref containers are never replaced.
+     */
+    const imageCache =
+      imageCacheRef.current;
+
+    const loading =
+      loadingRef.current;
+
     let cancelled = false;
 
     let preloadTimer:
@@ -1653,8 +1663,8 @@ export function HeroBowScene({
        * Release decoded frame references.
        * Browser HTTP cache remains free to reuse downloaded files.
        */
-      imageCacheRef.current.clear();
-      loadingRef.current.clear();
+      imageCache.clear();
+      loading.clear();
 
       cropPromiseRef.current = {};
     };

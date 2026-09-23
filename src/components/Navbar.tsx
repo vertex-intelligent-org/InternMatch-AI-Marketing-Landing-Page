@@ -120,8 +120,10 @@ export function Navbar() {
   };
 
   const reloadHome = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault();
-    window.location.href = "/";
+    if (window.location.pathname === "/") {
+      event.preventDefault();
+      window.location.reload();
+    }
   };
 
   return (
