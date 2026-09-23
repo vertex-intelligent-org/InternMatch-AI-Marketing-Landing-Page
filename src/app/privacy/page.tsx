@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Privacy Policy | InternMatch AI",
   description:
     "Learn how InternMatch AI processes account, profile, CV, employer, application, AI, subscription, notification, and technical data.",
+  alternates: {
+    canonical: "/privacy",
+  },
 };
 
 const SECTIONS = [

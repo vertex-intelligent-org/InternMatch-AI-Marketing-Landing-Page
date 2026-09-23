@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Account & Data Deletion | InternMatch AI",
   description:
     "Learn how to delete your InternMatch AI account and associated product data.",
+  alternates: {
+    canonical: "/data-deletion",
+  },
 };
 
 export default function DataDeletionPage() {

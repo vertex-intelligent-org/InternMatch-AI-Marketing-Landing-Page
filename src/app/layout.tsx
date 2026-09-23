@@ -14,6 +14,38 @@ const cairo = Cairo({
   variable: "--font-cairo",
 });
 
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://internmatch.college/#website",
+      url: "https://internmatch.college/",
+      name: "InternMatch AI",
+      description:
+        "AI-powered internship matching and application support for university students.",
+      inLanguage: ["en", "tr", "ar"],
+      about: {
+        "@id": "https://internmatch.college/#software",
+      },
+    },
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://internmatch.college/#software",
+      name: "InternMatch AI",
+      url: "https://internmatch.college/",
+      description:
+        "AI-powered internship matching and application support for university students.",
+      operatingSystem: ["iOS", "Android"],
+      applicationCategory: "BusinessApplication",
+      inLanguage: ["en", "tr", "ar"],
+      isPartOf: {
+        "@id": "https://internmatch.college/#website",
+      },
+    },
+  ],
+};
+
 export const metadata: Metadata = {
   title: "InternMatch AI — Stop Searching. Start Matching.",
   description:
@@ -71,6 +103,12 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${bricolage.variable} ${cairo.variable}`}>
       <body className="min-h-screen bg-[#F7F7F5] text-[#171A1C] antialiased selection:bg-[#467A8F] selection:text-white">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify(structuredData),
+          }}
+        />
         {children}
       </body>
     </html>

@@ -10,6 +10,9 @@ export const metadata: Metadata = {
   title: "Terms of Use | InternMatch AI",
   description:
     "Read the terms governing access to and use of InternMatch AI.",
+  alternates: {
+    canonical: "/terms",
+  },
 };
 
 const SECTIONS = [
