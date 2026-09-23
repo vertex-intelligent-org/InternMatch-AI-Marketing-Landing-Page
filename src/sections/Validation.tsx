@@ -9,6 +9,7 @@ import {
   TECH_STACK_PILLS,
   VALIDATION_METRICS,
 } from "@/lib/constants";
+import { STORE_RELEASE } from "@/lib/store";
 
 export function Validation() {
   const primaryMetric = VALIDATION_METRICS[0];
@@ -51,8 +52,7 @@ export function Validation() {
           </h2>
 
           <p className="mt-5 max-w-2xl text-sm leading-relaxed text-[#A3ADB1] sm:text-base">
-            Automated validation, structured architecture and a core product
-            now moving through launch readiness.
+            {STORE_RELEASE.validationCopy}
           </p>
         </div>
 
@@ -61,7 +61,7 @@ export function Validation() {
             ==================================================== */}
         <div className="grid gap-4 lg:grid-cols-[1.15fr_1fr] lg:gap-5">
           {/* --------------------------------------------------
-              PRIMARY METRIC — 542 TESTS
+              PRIMARY METRIC — 1087 TESTS
               -------------------------------------------------- */}
           <article className="relative overflow-hidden rounded-[28px] border border-[#D7DEE2] bg-[#F2F4F5] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.08)] sm:p-8">
             <div
@@ -95,7 +95,7 @@ export function Validation() {
 
                 <div className="mt-7 flex items-center gap-2 border-t border-[#D7DEE2] pt-5 text-xs font-semibold text-[#52666E]">
                   <span className="h-2 w-2 rounded-full bg-[#78A9B8]" />
-                  614 passing across 39 test files
+                  1,087 automated backend tests
                 </div>
               </div>
             </div>
@@ -141,7 +141,7 @@ export function Validation() {
         </div>
 
         {/* ====================================================
-            LAUNCH READINESS STRIP
+            RELEASE STATUS STRIP
             ==================================================== */}
         <div className="mt-5 overflow-hidden rounded-[26px] border border-[#35525D] bg-[#F2F4F5]">
           <div className="grid lg:grid-cols-[0.9fr_1.6fr]">

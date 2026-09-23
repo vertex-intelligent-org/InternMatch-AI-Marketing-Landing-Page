@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   title: "InternMatch AI — Stop Searching. Start Matching.",
   description:
     "AI-powered internship matching and application support for university students.",
-  metadataBase: new URL("https://internmatch.ai"),
+  metadataBase: new URL("https://internmatch.college"),
   keywords: [
     "Internship Matching",
     "AI Internships",
@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     title: "InternMatch AI — Stop Searching. Start Matching.",
     description:
       "AI-powered internship matching and application support for university students.",
-    url: "https://internmatch.ai",
+    url: "https://internmatch.college",
     siteName: "InternMatch AI",
     locale: "en_US",
     type: "website",

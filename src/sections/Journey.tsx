@@ -3,11 +3,16 @@
 import { useEffect, useRef } from "react";
 import { CheckIcon } from "@/components/Icons";
 import { JOURNEY_MILESTONES } from "@/lib/constants";
+import { STORE_RELEASE } from "@/lib/store";
 
 export function Journey() {
   const sectionRef = useRef<HTMLElement | null>(null);
   const railRef = useRef<HTMLDivElement | null>(null);
   const currentRef = useRef<HTMLDivElement | null>(null);
+
+  const currentMilestone = JOURNEY_MILESTONES.find(
+    (item) => item.status === "current",
+  );
 
   useEffect(() => {
     const section = sectionRef.current;
@@ -91,7 +96,7 @@ export function Journey() {
           /*
            * Ease-out cubic:
            * fast travel first, then settles cleanly
-           * onto Launch Readiness.
+           * onto the current milestone.
            */
           const eased = 1 - Math.pow(1 - progress, 3);
 
@@ -198,8 +203,7 @@ export function Journey() {
             </h2>
 
             <p className="mt-4 max-w-2xl text-sm leading-relaxed text-[#656B70] sm:text-base">
-              A disciplined transition from an initial hackathon concept
-              toward public launch.
+              {STORE_RELEASE.journeyIntro}
             </p>
           </div>
 
@@ -210,7 +214,7 @@ export function Journey() {
             </span>
 
             <span className="text-[10px] font-bold uppercase tracking-[0.14em] text-[#467A8F]">
-              Current · Launch Readiness
+              Current · {currentMilestone?.stage ?? "Store Release"}
             </span>
           </div>
         </div>
@@ -347,11 +351,7 @@ export function Journey() {
                               : "text-[#939DA1]"
                         }`}
                       >
-                        {isCurrent
-                          ? "Preparing initial release"
-                          : isCompleted
-                            ? "Milestone reached"
-                            : "Planned milestone"}
+                        {item.cue}
                       </div>
                     </div>
                   </article>

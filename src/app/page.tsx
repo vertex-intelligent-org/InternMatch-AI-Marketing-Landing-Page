@@ -45,10 +45,10 @@ export default function Home() {
         {/* 10: Employer (Restrained Student-First Growth) */}
         <Employer />
 
-        {/* 11: Validation & Credibility (542 Tests, Launch Readiness) */}
+        {/* 11: Validation & Credibility (1087 Tests, Store Release Status) */}
         <Validation />
 
-        {/* 12: Product Journey (Shipaton to Türkiye Expansion, Launch Readiness Current) */}
+        {/* 12: Product Journey (Shipaton to Türkiye Expansion, Store Release Current) */}
         <Journey />
 
 {/* 13: Team (Founding Builders: Mohamad Barakat & Selenur Yurdakul) */}

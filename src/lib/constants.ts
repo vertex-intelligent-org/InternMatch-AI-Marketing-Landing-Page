@@ -1,9 +1,11 @@
+import { STORE_CONFIG, STORE_RELEASE } from "./store";
+
 export const SITE_CONFIG = {
   name: "InternMatch AI",
   tagline: "Stop searching. Start matching.",
   description:
     "AI-powered internship matching and application support for university students.",
-  url: "https://internmatch.ai",
+  url: "https://internmatch.college",
   builders: {
     names: ["Mohamad Barakat", "Selenur Yurdakul"],
     title: "Co-founders / Builders",
@@ -12,7 +14,7 @@ export const SITE_CONFIG = {
     shortContext: "Built by Üsküdar University students · Members of AISS Club",
     milestone: "Originally developed for RevenueCat Shipaton 2026",
   },
-  status: "Core product built and validated; currently entering launch readiness.",
+  status: STORE_RELEASE.platformStatus,
   languages: ["English", "Türkçe", "العربية"],
 };
 
@@ -59,7 +61,7 @@ export const EXTERNAL_LINKS = {
   DEMO_URL: null as string | null,
 
   // Official GitHub marketing website repository URL
-  GITHUB_URL: "https://github.com/vertex-intelligent/InternMatch-AI-Marketing-Landing-Page" as string | null,
+  GITHUB_URL: "https://github.com/vertex-intelligent-org/InternMatch-AI-Marketing-Landing-Page" as string | null,
 
   // Support company website
   VERTEX_URL: "https://vertexintelligent.com" as string,
@@ -77,8 +79,8 @@ export const EXTERNAL_LINKS = {
   SELENUR_PORTFOLIO_URL: null as string | null,
 
   // App store links (only rendered when real URLs exist)
-  APP_STORE_URL: null as string | null,
-  PLAY_STORE_URL: null as string | null,
+  APP_STORE_URL: STORE_CONFIG.apple.url,
+  PLAY_STORE_URL: STORE_CONFIG.googlePlay.url,
 
   // Official contact address: MUST remain null until explicitly provided
   CONTACT_EMAIL: null as string | null,
@@ -253,10 +255,10 @@ export const BENEFITS = [
 
 export const VALIDATION_METRICS = [
   {
-    value: "614",
+    value: "1087",
     label: "Backend tests passed",
-    subtext: "Full automated backend suite · 2 skipped",
-    tag: "39 test files",
+    subtext: "Automated backend validation suite",
+    tag: "Backend automated tests",
   },
   {
     value: "Protected",
@@ -290,41 +292,57 @@ export const JOURNEY_MILESTONES = [
   {
     stage: "Shipaton Idea",
     status: "completed",
-    description: "Original concept born at RevenueCat Shipaton 2026.",
+    description:
+      "Original concept born at RevenueCat Shipaton 2026.",
+    cue: "Milestone reached",
   },
   {
     stage: "Working Product",
     status: "completed",
-    description: "Core matching engine and candidate profile parsing operational.",
+    description:
+      "Core matching engine and candidate profile parsing operational.",
+    cue: "Milestone reached",
   },
   {
     stage: "Real-Device Validation",
     status: "completed",
-    description: "Validated on a real Android device across core CV and matching flows.",
+    description:
+      "Validated on a real Android device across core CV and matching flows.",
+    cue: "Milestone reached",
   },
   {
-    stage: "Launch Readiness",
+    stage: STORE_RELEASE.allLive
+      ? "Public Release"
+      : "Store Release",
     status: "current",
-    description: "Refining UI, system hardening, and preparing for initial release.",
+    description: STORE_RELEASE.allLive
+      ? "InternMatch AI is publicly available through the App Store and Google Play."
+      : STORE_RELEASE.anyLive
+        ? "Public store rollout is underway while remaining platform availability completes."
+        : "The mobile product is prepared for release while public store availability remains pending.",
+    cue: STORE_RELEASE.currentJourneyCue,
   },
   {
-    stage: "University Beta",
+    stage: "University Growth",
     status: "upcoming",
-    description: "Controlled rollout with an initial university student cohort.",
+    description:
+      "Grow adoption with university students and employer communities.",
+    cue: "Planned milestone",
   },
   {
     stage: "Türkiye Expansion",
     status: "upcoming",
-    description: "Broader regional availability across campus communities.",
+    description:
+      "Broader regional availability across campus and employer communities.",
+    cue: "Planned milestone",
   },
 ];
-
 
 export const FAQS = [
   {
     question: "Is InternMatch AI a job board?",
     answer:
-      "Not exactly. InternMatch focuses on helping students understand which internship opportunities fit their profile and why.",
+      "Not exactly. InternMatch focuses on helping students understand which internship opportunities fit their profile and why, while also supporting employer workflows for opportunities and applications.",
   },
   {
     question: "How does matching work?",
@@ -339,16 +357,15 @@ export const FAQS = [
   {
     question: "What happens to my CV?",
     answer:
-      "CV information is processed to provide InternMatch features. Full data-handling details will be published in the Privacy Policy before public release.",
+      "CV information is processed to provide InternMatch features. Our published Privacy Policy explains how this information is handled, retained, secured, and deleted.",
   },
   {
     question: "Is InternMatch available now?",
-    answer:
-      "InternMatch AI is currently entering launch readiness and preparing for its initial university release.",
+    answer: STORE_RELEASE.availabilityFaq,
   },
   {
-    question: "Will it be available on iOS and Android?",
-    answer:
-      "InternMatch AI is built as a cross-platform mobile product. Public store availability will be announced following platform approval.",
+    question:
+      "Will InternMatch be available on iPhone and Android?",
+    answer: STORE_RELEASE.platformFaq,
   },
 ];

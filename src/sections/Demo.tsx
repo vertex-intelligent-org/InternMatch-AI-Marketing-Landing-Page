@@ -155,7 +155,7 @@ export function Demo() {
 
                   <div className="text-left">
                     <div className="text-xs font-bold text-[#F5F6F4] sm:text-sm">
-                      Full demo coming soon
+                      Product video coming soon
                     </div>
 
                     <div className="mt-0.5 text-[9px] text-[#89AAB4] sm:text-[10px]">

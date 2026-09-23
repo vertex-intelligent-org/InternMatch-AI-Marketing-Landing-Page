@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://internmatch.ai/sitemap.xml",
+    sitemap: "https://internmatch.college/sitemap.xml",
   };
 }

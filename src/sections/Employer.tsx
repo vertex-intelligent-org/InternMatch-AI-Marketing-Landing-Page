@@ -17,12 +17,13 @@ export function Employer() {
             <h2 className="text-2xl sm:text-3xl font-extrabold text-[#171A1C] tracking-tight leading-snug mb-4">
               Built for students.
               <br />
-              Designed to grow with employers.
+              Built for employers, too.
             </h2>
             <p className="text-sm sm:text-base text-[#656B70] leading-relaxed font-normal">
-              InternMatch AI&apos;s initial launch focuses on the student experience.
-              The platform architecture also supports employer-created
-              opportunities, applicant review and interview workflows.
+              InternMatch AI supports both student and employer workflows,
+              including employer-created opportunities, applicant review,
+              interview workflows, organization verification, and structured
+              hiring support.
             </p>
           </div>
 

@@ -6,6 +6,7 @@ import { Button } from "./Button";
 import { Logo } from "./Logo";
 import { MenuIcon, CloseIcon, PlayIcon } from "./Icons";
 import { NAV_LINKS } from "@/lib/constants";
+import { StoreDownloadBadges } from "./StoreDownloadBadges";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -226,7 +227,7 @@ export function Navbar() {
           </div>
 
           <nav
-            className="flex-1 flex flex-col pt-10"
+            className="flex-1 min-h-0 flex flex-col overflow-y-auto pt-10"
             aria-label="Mobile Navigation"
           >
             <div className="flex flex-col">
@@ -243,6 +244,15 @@ export function Navbar() {
             </div>
 
             <div className="mt-auto pt-8">
+<div className="mb-6 border-t border-[#E5E7E8] pt-6">
+  <p className="mb-3 text-[11px] font-bold uppercase tracking-[0.14em] text-[#656B70]">
+    Get the App
+  </p>
+
+  <StoreDownloadBadges variant="menu" />
+</div>
+
+
               <Button
                 href="#demo"
                 variant="primary"

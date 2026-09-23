@@ -14,7 +14,7 @@ export function FAQ() {
             Answers to common questions.
           </h2>
           <p className="mt-4 text-base sm:text-lg text-[#656B70] leading-relaxed font-normal">
-            Everything you need to know about our matching engine, CV handling, and release timeline.
+            Everything you need to know about our matching engine, CV handling, and app availability.
           </p>
         </div>
 

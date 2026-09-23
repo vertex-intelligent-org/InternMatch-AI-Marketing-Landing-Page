@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { Logo } from "./Logo";
 import { SITE_CONFIG, EXTERNAL_LINKS } from "@/lib/constants";
+import { STORE_RELEASE } from "@/lib/store";
+import { StoreDownloadBadges } from "./StoreDownloadBadges";
 
 export function Footer() {
   return (
@@ -20,7 +22,7 @@ export function Footer() {
 
             <div className="pt-2 text-xs">
               <span className="inline-block rounded-md border border-[#C7DDE3] bg-[#F2F7F8] px-2.5 py-1 font-medium text-[#2D4C59]">
-                Launch Readiness · 2026
+                {STORE_RELEASE.shortStatus}
               </span>
             </div>
           </div>
@@ -131,6 +133,23 @@ export function Footer() {
             </a>
           </div>
         </div>
+
+{/* Store availability */}
+<div className="mt-10 rounded-[24px] border border-[#D8E2E5] bg-white px-5 py-5 shadow-[0_10px_30px_rgba(23,26,28,0.04)] sm:px-6">
+  <div className="flex flex-col gap-5 sm:flex-row sm:items-center sm:justify-between">
+    <div>
+      <h3 className="text-sm font-bold text-[#171A1C]">
+        {STORE_RELEASE.footerTitle}
+      </h3>
+
+      <p className="mt-1 max-w-md text-xs leading-relaxed text-[#656B70]">
+        {STORE_RELEASE.availabilityCopy}
+      </p>
+    </div>
+
+    <StoreDownloadBadges />
+  </div>
+</div>
 
         {/* Bottom bar */}
         <div className="mt-12 flex flex-col items-center justify-between gap-4 border-t border-[#E5E7E8] pt-8 text-xs text-[#656B70] sm:flex-row">
