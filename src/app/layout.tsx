@@ -47,7 +47,7 @@ const structuredData = {
 };
 
 export const metadata: Metadata = {
-  title: "InternMatch AI â€” Stop Searching. Start Matching.",
+  title: "InternMatch AI — Stop Searching. Start Matching.",
   description:
     "AI-powered internship matching and application support for university students.",
   metadataBase: new URL("https://internmatch.college"),
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     "CV Analysis",
     "Student Career Support",
     "AISS Club",
-    "ÃœskÃ¼dar University",
+    "Üsküdar University",
   ],
   authors: [
     { name: "Mohamad Barakat" },
@@ -66,7 +66,7 @@ export const metadata: Metadata = {
   ],
   creator: "Mohamad Barakat & Selenur Yurdakul",
   openGraph: {
-    title: "InternMatch AI â€” Stop Searching. Start Matching.",
+    title: "InternMatch AI — Stop Searching. Start Matching.",
     description:
       "AI-powered internship matching and application support for university students.",
     url: "https://internmatch.college",
@@ -78,13 +78,13 @@ export const metadata: Metadata = {
         url: "/media/social/internmatch-social-preview.png",
         width: 1200,
         height: 798,
-        alt: "InternMatch AI â€” AI-powered internship matching for university students",
+        alt: "InternMatch AI — AI-powered internship matching for university students",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "InternMatch AI â€” Stop Searching. Start Matching.",
+    title: "InternMatch AI — Stop Searching. Start Matching.",
     description:
       "AI-powered internship matching and application support for university students.",
     images: ["/media/social/internmatch-social-preview.png"],
