@@ -7,6 +7,7 @@ import { Logo } from "./Logo";
 import { MenuIcon, CloseIcon, PlayIcon } from "./Icons";
 import { NAV_LINKS } from "@/lib/constants";
 import { StoreDownloadBadges } from "./StoreDownloadBadges";
+import { HomeLogoLink } from "./HomeLogoLink";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -119,11 +120,41 @@ export function Navbar() {
     });
   };
 
-  const reloadHome = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    if (window.location.pathname === "/") {
-      event.preventDefault();
-      window.location.reload();
+  const handleSectionNavigation = (
+    event: React.MouseEvent<HTMLAnchorElement>,
+    href: string
+  ) => {
+    if (
+      !href.startsWith("/#") ||
+      window.location.pathname !== "/"
+    ) {
+      return;
     }
+
+    const targetHash =
+      href.slice(1);
+
+    const target =
+      document.querySelector(
+        targetHash
+      );
+
+    if (!target) {
+      return;
+    }
+
+    event.preventDefault();
+
+    window.history.pushState(
+      null,
+      "",
+      targetHash
+    );
+
+    target.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
   };
 
   return (
@@ -140,20 +171,23 @@ export function Navbar() {
             className="flex items-center justify-between"
             aria-label="Main Navigation"
           >
-            <Link
-              href="/"
-              onClick={reloadHome}
-              aria-label="Reload InternMatch AI homepage"
+            <HomeLogoLink
               className="flex items-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-4 focus-visible:ring-offset-[#F7F7F5] rounded-md"
             >
               <Logo size="md" />
-            </Link>
+            </HomeLogoLink>
 
             <div className="hidden md:flex items-center gap-8">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.label}
                   href={link.href}
+                  onClick={(event) =>
+                    handleSectionNavigation(
+                      event,
+                      link.href
+                    )
+                  }
                   className="text-base font-semibold text-[#656B70] hover:text-[#171A1C] transition-colors relative py-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] rounded"
                 >
                   {link.label}
@@ -163,7 +197,7 @@ export function Navbar() {
 
             <div className="hidden md:flex items-center">
               <Button
-                href="#demo"
+                href="/#demo"
                 variant="primary"
                 size="lg"
                 icon={<PlayIcon className="w-4 h-4" />}
@@ -208,14 +242,11 @@ export function Navbar() {
           }}
         >
           <div className="h-[72px] flex items-center justify-between border-b border-[#E5E7E8]">
-            <Link
-              href="/"
-              onClick={reloadHome}
-              aria-label="Reload InternMatch AI homepage"
+            <HomeLogoLink
               className="flex items-center rounded-md focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F]"
             >
               <Logo size="md" />
-            </Link>
+            </HomeLogoLink>
 
             <button
               ref={closeButtonRef}
@@ -237,7 +268,14 @@ export function Navbar() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  onClick={closeMenu}
+                  onClick={(event) => {
+                    closeMenu();
+
+                    handleSectionNavigation(
+                      event,
+                      link.href
+                    );
+                  }}
                   className="flex min-h-16 items-center border-b border-[#E5E7E8] text-[26px] leading-none font-semibold tracking-[-0.025em] text-[#171A1C] hover:text-[#467A8F] focus-visible:outline-none focus-visible:text-[#467A8F] transition-colors"
                 >
                   {link.label}
@@ -256,7 +294,7 @@ export function Navbar() {
 
 
               <Button
-                href="#demo"
+                href="/#demo"
                 variant="primary"
                 size="lg"
                 className="w-full"

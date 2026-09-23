@@ -155,6 +155,14 @@ export function HowItWorks() {
 
   const cardGap = 16;
 
+  /*
+   * Mobile scroll budget is intentionally decoupled from viewport
+   * height. Five workflow stages need enough room to scrub smoothly,
+   * but should not create a long pinned/dead zone.
+   */
+  const mobileStickyTop = 96;
+  const mobileScrollDistance = 620;
+
   useEffect(() => {
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -186,6 +194,79 @@ export function HowItWorks() {
     return () => window.removeEventListener("resize", updateDimensions);
   }, []);
 
+  /*
+   * Keep the mobile runway equal to the real sticky content height
+   * plus a fixed interaction budget.
+   *
+   * This avoids the old viewport-dependent ~900px pinned distance.
+   */
+  useEffect(() => {
+    if (
+      prefersReducedMotion ||
+      viewportWidth >= 768
+    ) {
+      return;
+    }
+
+    const runway =
+      runwayRef.current;
+
+    const sticky =
+      stickyRef.current;
+
+    if (!runway || !sticky) {
+      return;
+    }
+
+    let rafId: number | null = null;
+
+    const syncRunwayHeight = () => {
+      if (rafId !== null) {
+        window.cancelAnimationFrame(
+          rafId
+        );
+      }
+
+      rafId =
+        window.requestAnimationFrame(
+          () => {
+            rafId = null;
+
+            runway.style.height =
+              `${
+                sticky.offsetHeight +
+                mobileScrollDistance
+              }px`;
+          }
+        );
+    };
+
+    const resizeObserver =
+      new ResizeObserver(
+        syncRunwayHeight
+      );
+
+    resizeObserver.observe(
+      sticky
+    );
+
+    syncRunwayHeight();
+
+    return () => {
+      resizeObserver.disconnect();
+
+      if (rafId !== null) {
+        window.cancelAnimationFrame(
+          rafId
+        );
+      }
+    };
+  }, [
+    prefersReducedMotion,
+    viewportWidth,
+    mobileScrollDistance,
+  ]);
+
   // High-performance mobile workflow tracking:
   // scroll updates GPU transform directly; React only changes active card state.
   useEffect(() => {
@@ -201,7 +282,8 @@ export function HowItWorks() {
       const rect =
         runwayRef.current.getBoundingClientRect();
 
-      const stickyTop = 96;
+      const stickyTop =
+        mobileStickyTop;
 
       const stickyHeight =
         stickyRef.current?.offsetHeight ??
@@ -613,7 +695,7 @@ export function HowItWorks() {
             <div
               ref={runwayRef}
               className="relative -mx-4 px-4"
-              style={{ height: "calc(100dvh + 560px)" }}
+              style={{ height: "calc(100dvh + 220px)" }}
             >
               <div ref={stickyRef} className="sticky top-[96px] h-fit overflow-hidden py-2">
 

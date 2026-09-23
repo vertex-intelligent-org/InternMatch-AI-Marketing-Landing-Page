@@ -3,6 +3,8 @@ import { Logo } from "./Logo";
 import { SITE_CONFIG, EXTERNAL_LINKS } from "@/lib/constants";
 import { STORE_RELEASE } from "@/lib/store";
 import { StoreDownloadBadges } from "./StoreDownloadBadges";
+import { HomeLogoLink } from "./HomeLogoLink";
+import { BackToTopButton } from "./BackToTopButton";
 
 export function Footer() {
   return (
@@ -11,9 +13,9 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-10 md:grid-cols-4 lg:gap-12">
           {/* Brand */}
           <div className="space-y-4 md:col-span-1">
-            <Link href="/" className="inline-block">
+            <HomeLogoLink className="inline-block">
               <Logo size="sm" />
-            </Link>
+            </HomeLogoLink>
 
             <p className="max-w-xs text-xs leading-relaxed text-[#656B70]">
               AI-powered internship discovery, matching and application
@@ -36,7 +38,7 @@ export function Footer() {
             <ul className="space-y-2.5 text-xs sm:text-sm">
               <li>
                 <Link
-                  href="#product"
+                  href="/#product"
                   className="transition-colors hover:text-[#171A1C]"
                 >
                   Product
@@ -45,7 +47,7 @@ export function Footer() {
 
               <li>
                 <Link
-                  href="#how-it-works"
+                  href="/#how-it-works"
                   className="transition-colors hover:text-[#171A1C]"
                 >
                   How it works
@@ -54,7 +56,7 @@ export function Footer() {
 
               <li>
                 <Link
-                  href="#demo"
+                  href="/#demo"
                   className="transition-colors hover:text-[#171A1C]"
                 >
                   Demo
@@ -63,7 +65,7 @@ export function Footer() {
 
               <li>
                 <Link
-                  href="#team"
+                  href="/#team"
                   className="transition-colors hover:text-[#171A1C]"
                 >
                   Team
@@ -72,7 +74,7 @@ export function Footer() {
 
               <li>
                 <Link
-                  href="#faq"
+                  href="/#faq"
                   className="transition-colors hover:text-[#171A1C]"
                 >
                   FAQ
@@ -177,6 +179,10 @@ export function Footer() {
 
             <p>© 2026 InternMatch AI. All rights reserved.</p>
           </div>
+        </div>
+
+        <div className="mt-7 flex justify-center">
+          <BackToTopButton />
         </div>
       </div>
     </footer>

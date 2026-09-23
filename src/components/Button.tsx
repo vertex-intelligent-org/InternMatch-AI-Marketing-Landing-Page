@@ -111,23 +111,57 @@ export function Button({
   };
 
   if (href) {
-    const isHashLink = href.startsWith("#");
-    const isInternalPage = href.startsWith("/");
+    const isHashLink =
+      href.startsWith("#");
 
-    if (isHashLink) {
+    const isHomeSectionLink =
+      href.startsWith("/#");
+
+    const isInternalPage =
+      href.startsWith("/");
+
+    if (
+      isHashLink ||
+      isHomeSectionLink
+    ) {
       return (
         <Link
           href={href}
           className={combinedStyles}
           onClick={(event) => {
-            event.preventDefault();
             activate();
 
+            /*
+             * A /#section link from Privacy, Terms, or Data
+             * Deletion must be allowed to navigate back home.
+             */
+            if (
+              isHomeSectionLink &&
+              window.location.pathname !== "/"
+            ) {
+              return;
+            }
+
+            event.preventDefault();
+
+            const targetHash =
+              isHomeSectionLink
+                ? href.slice(1)
+                : href;
+
             window.setTimeout(() => {
-              const target = document.querySelector(href);
+              const target =
+                document.querySelector(
+                  targetHash
+                );
 
               if (target) {
-                window.history.pushState(null, "", href);
+                window.history.pushState(
+                  null,
+                  "",
+                  targetHash
+                );
+
                 target.scrollIntoView({
                   behavior: "smooth",
                   block: "start",

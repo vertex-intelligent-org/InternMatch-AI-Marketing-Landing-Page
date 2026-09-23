@@ -5,6 +5,13 @@ import { BENEFITS } from "@/lib/constants";
 
 type Benefit = (typeof BENEFITS)[number];
 
+/*
+ * Six cards still travel across the complete horizontal rail,
+ * but the vertical interaction budget is fixed so rail width does
+ * not turn into an excessively long mobile page.
+ */
+const MOBILE_BENEFITS_SCROLL_DISTANCE = 760;
+
 function BenefitCard({
   benefit,
   active,
@@ -198,11 +205,13 @@ export function Benefits() {
         rail.scrollWidth - viewport.clientWidth,
       );
 
-      const extraScroll = reducedMotionQuery.matches
-        ? 0
-        : maxShift + 180;
+      const extraScroll =
+        reducedMotionQuery.matches
+          ? 0
+          : MOBILE_BENEFITS_SCROLL_DISTANCE;
 
-      section.style.height = `${window.innerHeight + extraScroll}px`;
+      section.style.height =
+        `${window.innerHeight + extraScroll}px`;
 
       window.requestAnimationFrame(applyProgress);
     };

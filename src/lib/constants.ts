@@ -87,10 +87,10 @@ export const EXTERNAL_LINKS = {
 };
 
 export const NAV_LINKS = [
-  { label: "Product", href: "#product" },
-  { label: "How It Works", href: "#how-it-works" },
-  { label: "Demo", href: "#demo" },
-    { label: "Team", href: "#team" },
+  { label: "Product", href: "/#product" },
+  { label: "How It Works", href: "/#how-it-works" },
+  { label: "Demo", href: "/#demo" },
+  { label: "Team", href: "/#team" },
 ];
 
 export const BUILDERS = [
