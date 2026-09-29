@@ -11,23 +11,26 @@ const SHOWCASE_TITLE_CLASS =
 type ProductImageProps = {
   src: string;
   alt: string;
+  width: number;
+  height: number;
 };
 
 function ProductImage({
   src,
   alt,
+  width,
+  height,
 }: ProductImageProps) {
   return (
-    <div className="aurora-card-surface relative mx-auto w-full max-w-[500px] overflow-hidden rounded-[32px] border border-[#DCE5E7] bg-[#F7F7F5] p-3 shadow-sm sm:p-4 lg:p-5">
-      <div className="relative z-10 aspect-[10/17] w-full">
-        <Image
-          src={src}
-          alt={alt}
-          fill
-          sizes="(max-width: 640px) calc(100vw - 56px), (max-width: 1024px) 460px, 500px"
-          className="object-contain"
-        />
-      </div>
+    <div className="aurora-card-surface relative mx-auto w-full max-w-[500px] overflow-hidden rounded-[32px] border border-[#DCE5E7] bg-[#F7F7F5] p-2 shadow-sm sm:p-2.5 lg:p-3">
+      <Image
+        src={src}
+        alt={alt}
+        width={width}
+        height={height}
+        sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 1024px) 460px, 500px"
+        className="relative z-10 block h-auto w-full object-contain"
+      />
     </div>
   );
 }
@@ -63,6 +66,8 @@ export function ProductShowcase() {
           <div className="lg:col-span-7 lg:order-1">
             <ProductImage
               src="/media/product-showcase/account-access.png"
+              width={1086}
+              height={1448}
               alt="InternMatch AI account access screen"
             />
           </div>
@@ -125,6 +130,8 @@ export function ProductShowcase() {
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-2">
             <ProductImage
               src="/media/product-showcase/cv-analysis.png"
+              width={1320}
+              height={2868}
               alt="InternMatch AI CV analysis and structured profile screen"
             />
           </div>
@@ -161,6 +168,8 @@ export function ProductShowcase() {
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-1">
             <ProductImage
               src="/media/product-showcase/matchups.png"
+              width={1320}
+              height={2868}
               alt="InternMatch AI internship matchups screen"
             />
           </div>
@@ -219,6 +228,8 @@ export function ProductShowcase() {
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-2">
             <ProductImage
               src="/media/product-showcase/why-you-match.png"
+              width={1320}
+              height={2868}
               alt="InternMatch AI Why You Match explanation screen"
             />
           </div>
@@ -249,6 +260,8 @@ export function ProductShowcase() {
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-1">
             <ProductImage
               src="/media/product-showcase/application-support.png"
+              width={1320}
+              height={2868}
               alt="InternMatch AI application support screen"
             />
           </div>
@@ -305,6 +318,8 @@ export function ProductShowcase() {
           <div className="mt-2 lg:mt-0 lg:col-span-7 lg:order-2">
             <ProductImage
               src="/media/product-showcase/application-tracking.png"
+              width={1320}
+              height={2868}
               alt="InternMatch AI application tracking screen"
             />
           </div>

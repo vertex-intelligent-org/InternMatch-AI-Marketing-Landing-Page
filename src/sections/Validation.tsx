@@ -61,7 +61,7 @@ export function Validation() {
             ==================================================== */}
         <div className="grid gap-4 lg:grid-cols-[1.15fr_1fr] lg:gap-5">
           {/* --------------------------------------------------
-              PRIMARY METRIC — 1087 TESTS
+              PRIMARY METRIC — 1092 TESTS
               -------------------------------------------------- */}
           <article className="relative overflow-hidden rounded-[28px] border border-[#D7DEE2] bg-[#F2F4F5] p-6 shadow-[0_18px_45px_rgba(0,0,0,0.08)] sm:p-8">
             <div
@@ -95,7 +95,7 @@ export function Validation() {
 
                 <div className="mt-7 flex items-center gap-2 border-t border-[#D7DEE2] pt-5 text-xs font-semibold text-[#52666E]">
                   <span className="h-2 w-2 rounded-full bg-[#78A9B8]" />
-                  1,087 automated backend tests
+                  1,092 automated backend tests
                 </div>
               </div>
             </div>

@@ -66,6 +66,9 @@ export const EXTERNAL_LINKS = {
   // Support company website
   VERTEX_URL: "https://vertexintelligent.com" as string,
 
+  // Infrastructure supporter website
+  METATIP_URL: "https://www.metatip.tr/" as string,
+
   // Official AISS Club URL
   AISS_URL: null as string | null,
 
@@ -255,7 +258,7 @@ export const BENEFITS = [
 
 export const VALIDATION_METRICS = [
   {
-    value: "1087",
+    value: "1092",
     label: "Backend tests passed",
     subtext: "Automated backend validation suite",
     tag: "Backend automated tests",

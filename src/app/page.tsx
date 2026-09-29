@@ -52,7 +52,7 @@ export default function Home() {
         {/* 10: Employer (Restrained Student-First Growth) */}
         <Employer />
 
-        {/* 11: Validation & Credibility (1087 Tests, Store Release Status) */}
+        {/* 11: Validation & Credibility (1092 Tests, Store Release Status) */}
         <Validation />
 
         {/* 12: Product Journey (Shipaton to Türkiye Expansion, Store Release Current) */}

@@ -125,14 +125,25 @@ export function Footer() {
               Support
             </h3>
 
-            <a
-              href={EXTERNAL_LINKS.VERTEX_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-xs font-medium text-[#656B70] transition-colors hover:text-[#171A1C] sm:text-sm"
-            >
-              VERTEX AI
-            </a>
+            <div className="flex flex-col items-start gap-2.5">
+              <a
+                href={EXTERNAL_LINKS.VERTEX_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-[#656B70] transition-colors hover:text-[#171A1C] sm:text-sm"
+              >
+                VERTEX AI
+              </a>
+
+              <a
+                href={EXTERNAL_LINKS.METATIP_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs font-medium text-[#656B70] transition-colors hover:text-[#171A1C] sm:text-sm"
+              >
+                METATIP
+              </a>
+            </div>
           </div>
         </div>
 
