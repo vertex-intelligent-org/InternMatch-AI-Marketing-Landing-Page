@@ -58,7 +58,7 @@ export const BRAND_COLORS = {
    ========================================================================== */
 export const EXTERNAL_LINKS = {
   // Demo video source (e.g. /media/internmatch-demo.mp4 or YouTube link)
-  DEMO_URL: null as string | null,
+  DEMO_URL: "https://youtu.be/FOoJVTpqCOg?feature=shared" as string | null,
 
   // Official GitHub marketing website repository URL
   GITHUB_URL: "https://github.com/vertex-intelligent-org/InternMatch-AI-Marketing-Landing-Page" as string | null,
