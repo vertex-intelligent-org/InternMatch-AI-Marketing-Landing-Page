@@ -18,8 +18,8 @@ export const STORE_CONFIG: StoreConfiguration = {
     url: null,
   },
   googlePlay: {
-    status: "pending",
-    url: null,
+    status: "live",
+    url: "https://play.google.com/store/apps/details?id=com.aissclub.internmatchai",
   },
 };
 
