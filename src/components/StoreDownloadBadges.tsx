@@ -24,19 +24,24 @@ export function StoreDownloadBadges({
   const googlePlayUrl =
     STORE_CONFIG.googlePlay.url;
 
+  const badgeWidthClass =
+    variant === "menu"
+      ? "w-[210px]"
+      : "w-[220px]";
+
   return (
     <div
-      className={`flex flex-col gap-2.5 ${
+      className={`flex w-full flex-col gap-3 ${
         variant === "menu"
           ? "items-start text-left"
           : "items-start sm:items-end sm:text-right"
       } ${className}`}
     >
       <div
-        className={`flex gap-3.5 ${
+        className={`flex w-full gap-4 ${
           variant === "menu"
             ? "flex-col items-start"
-            : "flex-wrap items-center sm:justify-end"
+            : "flex-col items-start sm:flex-row sm:items-center sm:justify-end"
         }`}
       >
         {googlePlayLive && googlePlayUrl ? (
@@ -46,18 +51,16 @@ export function StoreDownloadBadges({
             rel="noopener noreferrer"
             aria-label="Get InternMatch AI on Google Play"
             data-store-badge="google-play"
-            className="inline-flex rounded-lg transition-[transform,opacity] duration-200 hover:scale-[1.025] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-2"
+            className={`inline-flex max-w-full shrink-0 rounded-lg transition-[transform,opacity] duration-200 hover:scale-[1.025] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-2 ${badgeWidthClass}`}
           >
             <Image
-              src="/store-badges/get-it-on-google-play.png"
+              src="/store-badges/get-it-on-google-play-trimmed.png"
               alt=""
               aria-hidden="true"
-              width={134}
-              height={52}
+              width={568}
+              height={172}
               unoptimized
-              className={`w-auto ${
-                variant === "menu" ? "h-16" : "h-20 md:h-[5.5rem]"
-              }`}
+              className="block h-auto w-full"
             />
           </a>
         ) : (
@@ -65,17 +68,15 @@ export function StoreDownloadBadges({
             aria-disabled="true"
             title="Google Play availability coming soon"
             data-store-badge="google-play"
-            className="inline-flex cursor-not-allowed select-none rounded-lg opacity-40 grayscale"
+            className={`inline-flex max-w-full shrink-0 cursor-not-allowed select-none rounded-lg opacity-40 grayscale ${badgeWidthClass}`}
           >
             <Image
-              src="/store-badges/get-it-on-google-play.png"
+              src="/store-badges/get-it-on-google-play-trimmed.png"
               alt="Google Play availability coming soon"
-              width={134}
-              height={52}
+              width={568}
+              height={172}
               unoptimized
-              className={`w-auto ${
-                variant === "menu" ? "h-16" : "h-20 md:h-[5.5rem]"
-              }`}
+              className="block h-auto w-full"
             />
           </span>
         )}
@@ -87,7 +88,7 @@ export function StoreDownloadBadges({
             rel="noopener noreferrer"
             aria-label="Download InternMatch AI on the App Store"
             data-store-badge="app-store"
-            className="inline-flex rounded-lg transition-[transform,opacity] duration-200 hover:scale-[1.025] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-2"
+            className={`inline-flex max-w-full shrink-0 rounded-lg transition-[transform,opacity] duration-200 hover:scale-[1.025] hover:opacity-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#467A8F] focus-visible:ring-offset-2 ${badgeWidthClass}`}
           >
             <Image
               src="/store-badges/download-on-the-app-store.svg"
@@ -96,11 +97,7 @@ export function StoreDownloadBadges({
               width={120}
               height={40}
               unoptimized
-              className={`w-auto ${
-                variant === "menu"
-                  ? "h-12"
-                  : "h-14 md:h-16"
-              }`}
+              className="block h-auto w-full"
             />
           </a>
         ) : (
@@ -108,7 +105,7 @@ export function StoreDownloadBadges({
             aria-disabled="true"
             title="App Store availability coming soon"
             data-store-badge="app-store"
-            className="inline-flex cursor-not-allowed select-none rounded-lg opacity-40 grayscale"
+            className={`inline-flex max-w-full shrink-0 cursor-not-allowed select-none rounded-lg opacity-40 grayscale ${badgeWidthClass}`}
           >
             <Image
               src="/store-badges/download-on-the-app-store.svg"
@@ -116,11 +113,7 @@ export function StoreDownloadBadges({
               width={120}
               height={40}
               unoptimized
-              className={`w-auto ${
-                variant === "menu"
-                  ? "h-12"
-                  : "h-14 md:h-16"
-              }`}
+              className="block h-auto w-full"
             />
           </span>
         )}
