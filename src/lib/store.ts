@@ -14,8 +14,8 @@ type StoreConfiguration = {
 
 export const STORE_CONFIG: StoreConfiguration = {
   apple: {
-    status: "pending",
-    url: null,
+    status: "live",
+    url: "https://apps.apple.com/us/app/internmatch-ai/id6809902796",
   },
   googlePlay: {
     status: "live",
